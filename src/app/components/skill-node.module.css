@@ -1,0 +1,79 @@
+.node {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    transition:
+        box-shadow 120ms ease,
+        filter 120ms ease,
+        transform 120ms ease;
+    overflow: visible;
+}
+
+.node:hover,
+.node:focus-visible {
+    outline: none;
+    filter: brightness(1.2) saturate(1.15);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35);
+}
+
+.node.allocated:hover,
+.node.allocated:focus-visible {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35), 0 0 12px rgba(34, 184, 207, 0.85);
+}
+
+.node.maxed:hover,
+.node.maxed:focus-visible {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35), 0 0 14px rgba(255, 212, 59, 0.9);
+}
+
+.node.allocated {
+    box-shadow: 0 0 10px rgba(34, 184, 207, 0.75);
+}
+
+.node.maxed {
+    box-shadow: 0 0 14px rgba(255, 212, 59, 0.8);
+}
+
+.node.locked {
+    filter: grayscale(0.85) brightness(0.55);
+}
+
+.node.selected {
+    box-shadow:
+        0 0 0 2px var(--mantine-color-cyan-filled),
+        0 0 12px rgba(34, 184, 207, 0.8);
+}
+
+.badge {
+    position: absolute;
+    bottom: -9px;
+    right: -6px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 6px;
+    background: var(--mantine-color-dark-9);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    line-height: 1.2;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.allocated .badge {
+    background: var(--mantine-color-cyan-8);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+.maxed .badge {
+    background: var(--mantine-color-yellow-filled);
+    color: var(--mantine-color-dark-9);
+}

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+.env
+.env.local
+.vscode/
+.idea/
+coverage/
+.yarn/cache
+.yarn/install-state.gz
+.pnp.*
+docs/
+.claude/

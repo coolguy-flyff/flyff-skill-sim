@@ -1,0 +1,85 @@
+{
+    "app": {
+        "title": "Simulateur de compétences pour Flyff Universe",
+        "subtitle": "Planifiez votre build 3e classe et partagez-le"
+    },
+    "home": {
+        "pickClass": "Choisissez une classe pour commencer"
+    },
+    "simulator": {
+        "level": "Niveau",
+        "reset": "Réinitialiser",
+        "resetAll": "Tout réinitialiser",
+        "share": "Copier le lien",
+        "shareCopied": "Lien copié",
+        "back": "Retour",
+        "points": "Points de compétence",
+        "pointsRemaining": "restants",
+        "max": "Max",
+        "masterVariations": "Variations de maître",
+        "passiveSkills": "Compétences passives",
+        "selectSkill": "Cliquez sur une compétence",
+        "pageLabel": "Page",
+        "addPage": "Ajouter une page de compétences",
+        "duplicatePage": "Dupliquer",
+        "renamePage": "Renommer",
+        "removePage": "Supprimer",
+        "selectBaseForVariations": "Sélectionnez une compétence de base de 3e classe pour voir ses variations de maître."
+    },
+    "tooltip": {
+        "level": "Niveau",
+        "element": "Élément",
+        "cooldown": "Temps de recharge",
+        "casting": "Temps d'incantation",
+        "range": "Portée",
+        "duration": "Durée",
+        "baseTime": "Temps de base",
+        "dotTick": "Tick DoT",
+        "perLv": "par Niv.",
+        "lvShort": "Niv.",
+        "pve": "JcE",
+        "pvp": "JcJ",
+        "baseDamage": "Dégâts de base",
+        "damageMultiplier": "Multiplicateur de dégâts",
+        "baseHeal": "Soin de base",
+        "scaling": "Échelle",
+        "attackScaling": "Échelle d'attaque",
+        "healScaling": "Échelle de soin",
+        "timeScaling": "Échelle de temps",
+        "buffs": "Buffs",
+        "synergies": "Synergies",
+        "applies": "Applique",
+        "setTo": "défini à",
+        "chanceToTrigger": "chance de déclencher",
+        "probability": "Probabilité",
+        "knockdownProbability": "Probabilité de renversement",
+        "masterVariation": "Variation de maître",
+        "recoverHpWhenBelow": "Récupérer des PV lorsque les PV tombent sous {{value}}%",
+        "mpCost": "PM",
+        "fpCost": "PF"
+    },
+    "issue": {
+        "CLASS_NOT_LEARNED": "Classe non apprise",
+        "CHARACTER_LEVEL_TOO_LOW": "Niveau de personnage trop bas",
+        "SKILL_MAX": "Déjà au niveau max",
+        "SKILL_MIN": "Déjà au niveau 0",
+        "INSUFFICIENT_POINTS": "Points de compétence insuffisants",
+        "PREREQ_MISSING": "Compétence requise manquante",
+        "PREREQ_LEVEL_TOO_LOW": "Niveau requis trop bas",
+        "MASTER_VARIATION_CONFLICT": "Une autre variation est déjà choisie",
+        "BASE_SKILL_NOT_MAXED": "La compétence de base doit être au max",
+        "LOCKED_BY_OTHER_SKILL": "Bloquée par une autre compétence",
+        "UNKNOWN_SKILL": "Compétence inconnue"
+    },
+    "footer": {
+        "madeBy": "Fait par",
+        "discord": "Discord",
+        "disclaimer": "Projet communautaire non affilié à Gala Lab Inc. ni approuvé par ce dernier.",
+        "legal": "Flyff Universe et tous les noms, logos et œuvres associés sont la propriété de Gala Lab Inc. Tous les éléments de jeu (icônes, noms, descriptions) restent la propriété de leurs détenteurs respectifs et sont utilisés ici à titre informatif uniquement.",
+        "officialSite": "Site officiel",
+        "sourceCode": "Code source"
+    },
+    "language": {
+        "label": "Langue"
+    }
+}

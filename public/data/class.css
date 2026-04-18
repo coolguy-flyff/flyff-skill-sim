@@ -1,0 +1,156 @@
+.class-icon {
+    --width: var(--icon-width);
+    --height: var(--icon-height);
+    --scale-x: calc(var(--width) / var(--icon-width));
+    --scale-y: calc(var(--height) / var(--icon-height));
+    background-size: calc(320px * var(--scale-x)) calc(320px * var(--scale-y));
+    background-position: calc(1px * var(--icon-offset-x) * var(--scale-x)) calc(1px * var(--icon-offset-y) * var(--scale-y));
+}
+
+.class-icon[data-icon="mercenary.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: 0;
+}
+
+.class-icon[data-icon="blade.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: 0;
+}
+
+.class-icon[data-icon="jester.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: 0;
+}
+
+.class-icon[data-icon="knight.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: 0;
+}
+
+.class-icon[data-icon="psychikeeper.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: 0;
+}
+
+.class-icon[data-icon="billposter.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -64;
+}
+
+.class-icon[data-icon="assist.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -64;
+}
+
+.class-icon[data-icon="acrobat.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -64;
+}
+
+.class-icon[data-icon="elementor.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -64;
+}
+
+.class-icon[data-icon="ranger.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -64;
+}
+
+.class-icon[data-icon="ringmaster.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -128;
+}
+
+.class-icon[data-icon="magician.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -128;
+}
+
+.class-icon[data-icon="vagrant.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -128;
+}
+
+.class-icon[data-icon="harlequin.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -128;
+}
+
+.class-icon[data-icon="seraph.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -128;
+}
+
+.class-icon[data-icon="mentalist.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -192;
+}
+
+.class-icon[data-icon="slayer.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -192;
+}
+
+.class-icon[data-icon="forcemaster.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -192;
+}
+
+.class-icon[data-icon="arcanist.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -192;
+}
+
+.class-icon[data-icon="templar.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -192;
+}
+
+.class-icon[data-icon="crackshooter.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -256;
+}
+

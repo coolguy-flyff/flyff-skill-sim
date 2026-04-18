@@ -1,0 +1,85 @@
+{
+    "app": {
+        "title": "Skill-Simulator für Flyff Universe",
+        "subtitle": "Plane deinen 3rd-Class-Build und teile ihn mit Freunden"
+    },
+    "home": {
+        "pickClass": "Wähle eine Klasse zum Start"
+    },
+    "simulator": {
+        "level": "Level",
+        "reset": "Zurücksetzen",
+        "resetAll": "Alle zurücksetzen",
+        "share": "Link teilen",
+        "shareCopied": "Link kopiert",
+        "back": "Zurück",
+        "points": "Skillpunkte",
+        "pointsRemaining": "übrig",
+        "max": "Max",
+        "masterVariations": "Meister-Variationen",
+        "passiveSkills": "Passive Skills",
+        "selectSkill": "Klicke einen Skill zur Vorschau",
+        "pageLabel": "Seite",
+        "addPage": "Skillseite hinzufügen",
+        "duplicatePage": "Duplizieren",
+        "renamePage": "Umbenennen",
+        "removePage": "Entfernen",
+        "selectBaseForVariations": "Wähle einen Basis-Skill der 3. Klasse, um seine Meister-Variationen zu sehen."
+    },
+    "tooltip": {
+        "level": "Level",
+        "element": "Element",
+        "cooldown": "Abklingzeit",
+        "casting": "Zauberzeit",
+        "range": "Reichweite",
+        "duration": "Dauer",
+        "baseTime": "Grundzeit",
+        "dotTick": "DoT-Tick",
+        "perLv": "pro Lv.",
+        "lvShort": "Lv.",
+        "pve": "PvE",
+        "pvp": "PvP",
+        "baseDamage": "Grundschaden",
+        "damageMultiplier": "Schadensmultiplikator",
+        "baseHeal": "Grundheilung",
+        "scaling": "Skalierung",
+        "attackScaling": "Angriffs-Skalierung",
+        "healScaling": "Heil-Skalierung",
+        "timeScaling": "Zeit-Skalierung",
+        "buffs": "Buffs",
+        "synergies": "Synergien",
+        "applies": "Wendet",
+        "setTo": "gesetzt auf",
+        "chanceToTrigger": "Auslösechance für",
+        "probability": "Wahrscheinlichkeit",
+        "knockdownProbability": "Niederschlag-Wahrscheinlichkeit",
+        "masterVariation": "Meister-Variation",
+        "recoverHpWhenBelow": "HP wiederherstellen, wenn unter {{value}}% HP",
+        "mpCost": "MP",
+        "fpCost": "FP"
+    },
+    "issue": {
+        "CLASS_NOT_LEARNED": "Klasse noch nicht erlernt",
+        "CHARACTER_LEVEL_TOO_LOW": "Charakterlevel zu niedrig",
+        "SKILL_MAX": "Bereits auf Max-Level",
+        "SKILL_MIN": "Bereits auf Level 0",
+        "INSUFFICIENT_POINTS": "Nicht genug Skillpunkte",
+        "PREREQ_MISSING": "Voraussetzungs-Skill fehlt",
+        "PREREQ_LEVEL_TOO_LOW": "Voraussetzungs-Level zu niedrig",
+        "MASTER_VARIATION_CONFLICT": "Andere Variation bereits gewählt",
+        "BASE_SKILL_NOT_MAXED": "Basis-Skill muss max sein",
+        "LOCKED_BY_OTHER_SKILL": "Von einem anderen Skill blockiert",
+        "UNKNOWN_SKILL": "Unbekannter Skill"
+    },
+    "footer": {
+        "madeBy": "Erstellt von",
+        "discord": "Discord",
+        "disclaimer": "Community-Projekt, nicht mit Gala Lab Inc. verbunden oder von diesen unterstützt.",
+        "legal": "Flyff Universe und alle zugehörigen Namen, Logos und Grafiken sind Eigentum von Gala Lab Inc. Alle Spielinhalte (Icons, Namen, Beschreibungen) bleiben Eigentum ihrer jeweiligen Inhaber und werden hier nur zu Informationszwecken verwendet.",
+        "officialSite": "Offizielle Seite",
+        "sourceCode": "Quellcode"
+    },
+    "language": {
+        "label": "Sprache"
+    }
+}

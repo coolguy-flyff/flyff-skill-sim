@@ -1,0 +1,19 @@
+.card {
+    cursor: pointer;
+    transition:
+        transform 120ms ease,
+        box-shadow 120ms ease,
+        border-color 120ms ease;
+    user-select: none;
+}
+
+.card:hover,
+.card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: var(--mantine-shadow-lg);
+    border-color: var(--mantine-color-cyan-filled);
+}
+
+.card:active {
+    transform: translateY(-1px);
+}

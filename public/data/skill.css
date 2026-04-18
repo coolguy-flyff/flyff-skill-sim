@@ -1,0 +1,1969 @@
+.skill-icon {
+    --width: var(--icon-width);
+    --height: var(--icon-height);
+    --scale-x: calc(var(--width) / var(--icon-width));
+    --scale-y: calc(var(--height) / var(--icon-height));
+    background-size: calc(1088px * var(--scale-x)) calc(1088px * var(--scale-y));
+    background-position: calc(1px * var(--icon-offset-x) * var(--scale-x)) calc(1px * var(--icon-offset-y) * var(--scale-y));
+}
+
+.skill-icon[data-icon="wndlbacksteb.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="rinsuphguard.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="blddblsonbld.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="acryoydeadly.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="meronekeenwh.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="acrsupblock.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="bilgvurtialbold.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="magwindcutter.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="ragbowicearr.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="meronebloody.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="rinsupprotec.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="meronesphit.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="asschebeefup.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="mersupblazin.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="jstsupswing.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="elemulmeteos.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="eleearstnspr.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: 0;
+}
+
+.skill-icon[data-icon="asschecircle.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="magrockcrash.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="asschecannon.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="asschemental.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="acrbowauto.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="bilpiercingserpent.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="magwaticemis.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="acrbowjunkbo.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="rincuregvur.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="psycruciospell.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="magwindstrong.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="ragboomburst.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="meronereflex.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="meronesplmas.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="acrsupbowmaster.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="eleeleelemst.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="meroneblinds.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -64;
+}
+
+.skill-icon[data-icon="acryoycounte.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="acryoysnitch.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="knttaxpaidea.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="assknutampin.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="magwaterball.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="assheapatien.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="magelelgtbal.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="knttswethdvd.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="meronesenake.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="knttswcharge.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="maglightshock.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="bilbaraqijalesna.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="acryoycross.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="blddswsilent.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="acrsupfastwa.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="asschestoneh.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="meroneguillo.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -128;
+}
+
+.skill-icon[data-icon="ragsupfastsh.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="magfireboomer.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="elewinvoid.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="elemulsanstm.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="mersupfury.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="asschecatsre.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="maglightpalm.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="mersupimpowe.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="bilsonichand.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="elefirfirbrd.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="asschequicks.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="magfirestrike.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="ragsupnature.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="acrbowrain.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="vagoneovercu.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="blddswblddan.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="bldsupberser.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -192;
+}
+
+.skill-icon[data-icon="bilbelialsmeshing.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="mersupsmitea.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="elefirfirmst.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="magspringwater.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="magmagmental.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="jstintabsorb.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="meronesmaste.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="ragbowtriple.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="acryoypullin.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="bilasalraalaikum.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="jstsupvatals.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="eleeleeleshk.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="bldrendingentry.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="magspekestone.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="burn.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="knttwopwswng.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="magfirehotair.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -256;
+}
+
+.skill-icon[data-icon="assheahealin.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="mershiepanbar.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="kntsuprage.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="bilasmodeus.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="psymaxcrisis.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="maglooting.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="ragbowpoison.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="jstsupescape.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="psyspirits.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="ragbowflamea.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="eleearearmst.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="elewinwinfil.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="assheapreven.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="assknupowerf.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="acrsupyoymaster.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="mershiebash.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="kntcalloffury.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -320;
+}
+
+.skill-icon[data-icon="elefirbunfil.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="eleelethunst.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="rinsqugebura.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="asscheaccura.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="acrbowaimeds.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="jstyoybackst.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="elemullgtstm.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="jstyoypenya.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="psypsybomb.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="lordkgrandrage.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="blddaxhawatt.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="florabsolutebarrier.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="magmagblinkp.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="acrsupillusi.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="rinheahealra.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="acryoyslowst.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="kntsuppairef.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -384;
+}
+
+.skill-icon[data-icon="elewinwinmst.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="psygravitywell.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="asscheheapup.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="elemulavalan.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="assknuburstc.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="eleearearsqk.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="ragbowpierci.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="vagonebrandi.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="psypsywall.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="rinsupcross.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="psydnolgy.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="asschemoonbeam.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="rinsupanzelr.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="blddblcross.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="psypsysquare.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="elewatwatmst.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="asshearesurr.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -448;
+}
+
+.skill-icon[data-icon="jstintpoison.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="ragbowsltaro.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="bilbloodfist.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="knttaxpwstum.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="acrbowsilent.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="magwindswordw.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="meroneamaster.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="rinsupspirit.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="elewaticeshk.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="blddaxspring.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="elewatpoicld.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="vagonecleanh.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="sklelecallofroika.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="psysnolgy.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="blddblarmpen.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="asshaste.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="kntsupguard.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -512;
+}
+
+.skill-icon[data-icon="jstintbleedi.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="sklkntsacrifice.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="yoyostorm.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="headshot.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="toxiccloud.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="gust.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="incinerate.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="soulofrhisis.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="additionaldamageforweaken.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="ignite.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="touchofrhisis.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="bloodarmor.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="nensphere.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="concentration.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="aurabomb.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="enlightenment.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="maelstromstrike.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -576;
+}
+
+.skill-icon[data-icon="tempestbarrage.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="shadowmirage.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="thunderstrike.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="alterego.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="sacrifice.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="bubblesblessing.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="hexeslament.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="gale.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="toxicfury.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="crossofblood.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="stormslash.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="trapdot.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="kyrieeleison.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="shadowstrike.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="additionaldamagefordisable.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="bloodythorn.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="stonefeet.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -640;
+}
+
+.skill-icon[data-icon="chimerascurse.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="trapbinding.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="blessingofthewise.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="maleficdetonation.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="lastonestanding.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="heavensstep.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="skysplitter.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="repellingshot.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="executionofjustice.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="lilithsgaze.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="swampyarea.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="barrage.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="flowofsalvation.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="firstblood.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="gloriapatri.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="trapblast.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="stormveilcloak.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -704;
+}
+
+.skill-icon[data-icon="nenoverflow.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="iceshard.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="breathoflife.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="shieldcrush.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="bldsilence.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="mantra.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="stormstrike.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="criticaljstyoyomaster.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="voltguard.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="aetherrend.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="markedattack.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="damnationsurge.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="powerpalm.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="nenacquisition.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="rushattack.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="stigma3.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="increaseddefduringloweredhpphysical.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -768;
+}
+
+.skill-icon[data-icon="ireofibilis.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="earthcounter.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="hymnliberation.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="tidalomen.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="riskmanagement.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="heavyshot.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="increasednaturalrecovery.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="devastatingsting.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="cimetieresscream.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="templarcall.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="staggeringstrike.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="condordive.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="trapdebuff.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="enhancedblinkpool.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="criticalstab.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="divineaffliction.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="zephyrsgrace.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -832;
+}
+
+.skill-icon[data-icon="forcegrip.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="celestialbarrier.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="blazeeater.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="additional6thhitcriticalchance.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="toxicassault.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="stonepillar.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="trapaoe.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="nenstorage.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="manaburn.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="hellfire.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="clearreflection.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="medidate.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="wndlmadhurricane.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="toxicanalogy.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="evastorm.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="masteroftoxic.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="lefthanded.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -896;
+}
+
+.skill-icon[data-icon="firecounter.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="electriccounter.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="weakeningstrike.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="hymnreducereceiveddamage.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="bloodyrush.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="advancedtrap.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="ambidextrous.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="increaseddefduringloweredhpmagic.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="hymnperfectperformance.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -512;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="farsight.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -576;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="windcounter.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -640;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="aquaveil.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -704;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="debuffdamagereduction.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -768;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="bloodaccumulation.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -832;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="markedprey.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -896;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="nenrelease.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -960;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="shieldmastery.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -1024;
+    --icon-offset-y: -960;
+}
+
+.skill-icon[data-icon="watercounter.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: 0;
+    --icon-offset-y: -1024;
+}
+
+.skill-icon[data-icon="masterofblade.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -64;
+    --icon-offset-y: -1024;
+}
+
+.skill-icon[data-icon="agility.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -128;
+    --icon-offset-y: -1024;
+}
+
+.skill-icon[data-icon="absorption.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -192;
+    --icon-offset-y: -1024;
+}
+
+.skill-icon[data-icon="increasedhprecovery.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -256;
+    --icon-offset-y: -1024;
+}
+
+.skill-icon[data-icon="undying.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -320;
+    --icon-offset-y: -1024;
+}
+
+.skill-icon[data-icon="masterofaxe.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -384;
+    --icon-offset-y: -1024;
+}
+
+.skill-icon[data-icon="enhancedincreasedhprecovery.png"] {
+    --icon-width: 64;
+    --icon-height: 64;
+    --icon-offset-x: -448;
+    --icon-offset-y: -1024;
+}
+

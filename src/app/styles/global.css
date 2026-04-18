@@ -1,0 +1,41 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background: var(--mantine-color-body);
+    color: var(--mantine-color-text);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.skill-icon,
+.class-icon {
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url('/data/skill.png');
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    width: calc(1px * var(--icon-width) * var(--scale-x, 1));
+    height: calc(1px * var(--icon-height) * var(--scale-y, 1));
+}
+
+.class-icon {
+    background-image: url('/data/class.png');
+}

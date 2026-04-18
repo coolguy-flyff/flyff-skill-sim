@@ -1,0 +1,85 @@
+{
+    "app": {
+        "title": "Simulador de habilidades para Flyff Universe",
+        "subtitle": "Planifica tu build de 3ª clase y compártela"
+    },
+    "home": {
+        "pickClass": "Elige una clase para empezar"
+    },
+    "simulator": {
+        "level": "Nivel",
+        "reset": "Reiniciar",
+        "resetAll": "Reiniciar todo",
+        "share": "Copiar enlace",
+        "shareCopied": "Enlace copiado",
+        "back": "Atrás",
+        "points": "Puntos de habilidad",
+        "pointsRemaining": "restantes",
+        "max": "Máx",
+        "masterVariations": "Variaciones maestras",
+        "passiveSkills": "Habilidades pasivas",
+        "selectSkill": "Haz clic en una habilidad",
+        "pageLabel": "Página",
+        "addPage": "Añadir página de habilidades",
+        "duplicatePage": "Duplicar",
+        "renamePage": "Renombrar",
+        "removePage": "Eliminar",
+        "selectBaseForVariations": "Selecciona una habilidad base de 3ª clase para ver sus variaciones maestras."
+    },
+    "tooltip": {
+        "level": "Nivel",
+        "element": "Elemento",
+        "cooldown": "Enfriamiento",
+        "casting": "Canalización",
+        "range": "Rango",
+        "duration": "Duración",
+        "baseTime": "Tiempo base",
+        "dotTick": "Tick DoT",
+        "perLv": "por Niv.",
+        "lvShort": "Niv.",
+        "pve": "JcE",
+        "pvp": "JcJ",
+        "baseDamage": "Daño base",
+        "damageMultiplier": "Multiplicador de daño",
+        "baseHeal": "Sanación base",
+        "scaling": "Escalado",
+        "attackScaling": "Escalado de ataque",
+        "healScaling": "Escalado de sanación",
+        "timeScaling": "Escalado de tiempo",
+        "buffs": "Mejoras",
+        "synergies": "Sinergias",
+        "applies": "Aplica",
+        "setTo": "fijado a",
+        "chanceToTrigger": "probabilidad de activar",
+        "probability": "Probabilidad",
+        "knockdownProbability": "Probabilidad de derribo",
+        "masterVariation": "Variación de maestro",
+        "recoverHpWhenBelow": "Recuperar HP cuando los HP bajen del {{value}}%",
+        "mpCost": "MP",
+        "fpCost": "FP"
+    },
+    "issue": {
+        "CLASS_NOT_LEARNED": "Clase aún no aprendida",
+        "CHARACTER_LEVEL_TOO_LOW": "Nivel de personaje demasiado bajo",
+        "SKILL_MAX": "Ya al nivel máximo",
+        "SKILL_MIN": "Ya al nivel 0",
+        "INSUFFICIENT_POINTS": "Puntos de habilidad insuficientes",
+        "PREREQ_MISSING": "Falta habilidad requerida",
+        "PREREQ_LEVEL_TOO_LOW": "Nivel requerido insuficiente",
+        "MASTER_VARIATION_CONFLICT": "Otra variación ya está elegida",
+        "BASE_SKILL_NOT_MAXED": "La habilidad base debe estar al máximo",
+        "LOCKED_BY_OTHER_SKILL": "Bloqueada por otra habilidad",
+        "UNKNOWN_SKILL": "Habilidad desconocida"
+    },
+    "footer": {
+        "madeBy": "Hecho por",
+        "discord": "Discord",
+        "disclaimer": "Proyecto comunitario no afiliado ni respaldado por Gala Lab Inc.",
+        "legal": "Flyff Universe y todos los nombres, logotipos y obras relacionados son propiedad de Gala Lab Inc. Todos los recursos del juego (iconos, nombres, descripciones) siguen siendo propiedad de sus respectivos dueños y se usan aquí con fines informativos.",
+        "officialSite": "Sitio oficial",
+        "sourceCode": "Código fuente"
+    },
+    "language": {
+        "label": "Idioma"
+    }
+}

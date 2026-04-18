@@ -1,0 +1,85 @@
+{
+    "app": {
+        "title": "Flyff Universe 技能模拟器",
+        "subtitle": "规划你的三转职业加点方案"
+    },
+    "home": {
+        "pickClass": "选择一个职业开始"
+    },
+    "simulator": {
+        "level": "等级",
+        "reset": "重置",
+        "resetAll": "全部重置",
+        "share": "复制分享链接",
+        "shareCopied": "已复制",
+        "back": "返回",
+        "points": "技能点",
+        "pointsRemaining": "剩余",
+        "max": "满级",
+        "masterVariations": "大师变体",
+        "passiveSkills": "被动技能",
+        "selectSkill": "点击技能查看详情",
+        "pageLabel": "页",
+        "addPage": "添加技能页",
+        "duplicatePage": "复制",
+        "renamePage": "重命名",
+        "removePage": "删除",
+        "selectBaseForVariations": "选择一个三转基础技能以查看其大师变体。"
+    },
+    "tooltip": {
+        "level": "等级",
+        "element": "属性",
+        "cooldown": "冷却",
+        "casting": "咏唱",
+        "range": "范围",
+        "duration": "持续",
+        "baseTime": "基础时间",
+        "dotTick": "持续伤害间隔",
+        "perLv": "每级",
+        "lvShort": "Lv.",
+        "pve": "PvE",
+        "pvp": "PvP",
+        "baseDamage": "基础伤害",
+        "damageMultiplier": "伤害倍率",
+        "baseHeal": "基础治疗",
+        "scaling": "加成",
+        "attackScaling": "攻击加成",
+        "healScaling": "治疗加成",
+        "timeScaling": "时间加成",
+        "buffs": "增益",
+        "synergies": "协同",
+        "applies": "施加",
+        "setTo": "设为",
+        "chanceToTrigger": "触发",
+        "probability": "概率",
+        "knockdownProbability": "击倒概率",
+        "masterVariation": "大师变体",
+        "recoverHpWhenBelow": "HP低于{{value}}%时恢复HP",
+        "mpCost": "MP",
+        "fpCost": "FP"
+    },
+    "issue": {
+        "CLASS_NOT_LEARNED": "尚未学习此职业",
+        "CHARACTER_LEVEL_TOO_LOW": "角色等级不足",
+        "SKILL_MAX": "已满级",
+        "SKILL_MIN": "已为 0 级",
+        "INSUFFICIENT_POINTS": "技能点不足",
+        "PREREQ_MISSING": "缺少前置技能",
+        "PREREQ_LEVEL_TOO_LOW": "前置技能等级不足",
+        "MASTER_VARIATION_CONFLICT": "已选择其他变体",
+        "BASE_SKILL_NOT_MAXED": "基础技能需满级",
+        "LOCKED_BY_OTHER_SKILL": "被其他技能锁定",
+        "UNKNOWN_SKILL": "未知技能"
+    },
+    "footer": {
+        "madeBy": "作者",
+        "discord": "Discord",
+        "disclaimer": "玩家社区项目，与 Gala Lab Inc. 无官方关联。",
+        "legal": "Flyff Universe 及所有相关名称、标志和艺术作品均为 Gala Lab Inc. 的财产。所有游戏素材（图标、名称、描述）归其各自所有者所有，此处仅用于信息展示。",
+        "officialSite": "官方网站",
+        "sourceCode": "源代码"
+    },
+    "language": {
+        "label": "语言"
+    }
+}

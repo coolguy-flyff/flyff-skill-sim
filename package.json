@@ -1,0 +1,48 @@
+{
+    "name": "flyff-skill-sim",
+    "version": "0.1.0",
+    "private": true,
+    "packageManager": "yarn@1.22.22",
+    "description": "Skill Simulator for Flyff Universe (3rd class support)",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc --noEmit && vite build",
+        "preview": "vite preview",
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "scrape": "tsx tools/scrape.ts"
+    },
+    "dependencies": {
+        "@mantine/core": "^7.17.3",
+        "@mantine/hooks": "^7.17.3",
+        "@tabler/icons-react": "^3.34.0",
+        "i18next": "^24.2.2",
+        "i18next-browser-languagedetector": "^8.0.4",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-i18next": "^15.4.0",
+        "react-router-dom": "^6.30.0",
+        "zustand": "^5.0.3"
+    },
+    "devDependencies": {
+        "@testing-library/dom": "^10.4.0",
+        "@testing-library/jest-dom": "^6.6.3",
+        "@testing-library/react": "^16.2.0",
+        "@types/node": "^22.13.4",
+        "@types/react": "^18.3.18",
+        "@types/react-dom": "^18.3.5",
+        "@vitejs/plugin-react": "^4.3.4",
+        "axios": "^1.7.9",
+        "jimp": "^1.6.0",
+        "jsdom": "^26.0.0",
+        "postcss": "^8.5.1",
+        "postcss-preset-mantine": "^1.17.0",
+        "postcss-simple-vars": "^7.0.1",
+        "tsx": "^4.19.2",
+        "typescript": "^5.7.3",
+        "vite": "^6.0.11",
+        "vitest": "^3.0.5"
+    }
+}

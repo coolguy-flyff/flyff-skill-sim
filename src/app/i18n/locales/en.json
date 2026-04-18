@@ -1,0 +1,85 @@
+{
+    "app": {
+        "title": "Skill Simulator for Flyff Universe",
+        "subtitle": "Plan your 3rd class build and share it with friends"
+    },
+    "home": {
+        "pickClass": "Pick a class to start"
+    },
+    "simulator": {
+        "level": "Level",
+        "reset": "Reset",
+        "resetAll": "Reset all",
+        "share": "Copy share link",
+        "shareCopied": "Link copied",
+        "back": "Back",
+        "points": "Skill points",
+        "pointsRemaining": "remaining",
+        "max": "Max",
+        "masterVariations": "Master Variations",
+        "passiveSkills": "Passive Skills",
+        "selectSkill": "Click a skill to preview it",
+        "pageLabel": "Page",
+        "addPage": "Add skill page",
+        "duplicatePage": "Duplicate",
+        "renamePage": "Rename",
+        "removePage": "Remove",
+        "selectBaseForVariations": "Select a base 3rd class skill to see its master variations."
+    },
+    "tooltip": {
+        "level": "Level",
+        "element": "Element",
+        "cooldown": "Cooldown",
+        "casting": "Casting time",
+        "range": "Spell range",
+        "duration": "Duration",
+        "baseTime": "Base Time",
+        "dotTick": "DoT Tick",
+        "perLv": "per Lv.",
+        "lvShort": "Lv.",
+        "pve": "PvE",
+        "pvp": "PvP",
+        "baseDamage": "Base damage",
+        "damageMultiplier": "Damage multiplier",
+        "baseHeal": "Base heal",
+        "scaling": "Scaling",
+        "attackScaling": "Attack Scaling",
+        "healScaling": "Heal Scaling",
+        "timeScaling": "Time Scaling",
+        "buffs": "Buffs",
+        "synergies": "Synergies",
+        "applies": "Applies",
+        "setTo": "set to",
+        "chanceToTrigger": "chance to trigger",
+        "probability": "Probability",
+        "knockdownProbability": "Knockdown Probability",
+        "masterVariation": "Master Variation",
+        "recoverHpWhenBelow": "Recover HP when below {{value}}% HP",
+        "mpCost": "MP",
+        "fpCost": "FP"
+    },
+    "issue": {
+        "CLASS_NOT_LEARNED": "Not learned at this level",
+        "CHARACTER_LEVEL_TOO_LOW": "Character level too low",
+        "SKILL_MAX": "Already at max level",
+        "SKILL_MIN": "Already at level 0",
+        "INSUFFICIENT_POINTS": "Not enough skill points",
+        "PREREQ_MISSING": "Prerequisite skill missing",
+        "PREREQ_LEVEL_TOO_LOW": "Prerequisite level too low",
+        "MASTER_VARIATION_CONFLICT": "Another variation is already chosen",
+        "BASE_SKILL_NOT_MAXED": "Base skill must be maxed",
+        "LOCKED_BY_OTHER_SKILL": "Locked by another skill",
+        "UNKNOWN_SKILL": "Unknown skill"
+    },
+    "footer": {
+        "madeBy": "Made by",
+        "discord": "Discord",
+        "disclaimer": "Fan community project, not affiliated with or endorsed by Gala Lab Inc.",
+        "legal": "Flyff Universe and all related names, logos, and artwork are property of Gala Lab Inc. All game assets (icons, names, descriptions) remain the property of their respective owners and are used here for informational purposes only.",
+        "officialSite": "Official site",
+        "sourceCode": "Source code"
+    },
+    "language": {
+        "label": "Language"
+    }
+}
