@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "packageManager": "yarn@1.22.22",
+    "license": "MIT",
     "description": "Skill Simulator for Flyff Universe (3rd class support)",
     "type": "module",
     "scripts": {

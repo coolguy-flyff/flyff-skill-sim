@@ -45,6 +45,10 @@ yarn scrape      # refresh skills/classes/icons from the Flyff Universe API
 
 The app is a plain Vite SPA, so it builds to a static `dist/` folder and runs on any static host. `public/_redirects` provides the SPA fallback so deep-linked routes resolve correctly on hosts that honor it.
 
+## License
+
+Source code is released under the [MIT License](LICENSE). Flyff Universe game assets are **not** covered by this license — see the note at the bottom of the LICENSE file.
+
 ## Disclaimer
 
 Fan community project. Not affiliated with or endorsed by Gala Lab Inc. Flyff Universe and all related names, logos, and artwork are property of Gala Lab Inc. Game assets (icons, names, descriptions) remain the property of their respective owners and are used here for informational purposes only.
