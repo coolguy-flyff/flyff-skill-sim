@@ -1,5 +1,5 @@
 import { Button, Group, Stack, Text, Tooltip as MantineTooltip } from '@mantine/core';
-import { IconAlertTriangle, IconArrowBackUp, IconChevronsUp } from '@tabler/icons-react';
+import { IconArrowBackUp, IconChevronsUp } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 import type { SkillRecord } from '@engine/types';
 import { AllocationIssue } from '@engine/types';
@@ -103,14 +103,9 @@ export function SkillControls({
                 </MantineTooltip>
             </Group>
 
-            {levelGated ? (
-                <Group gap={6} align="flex-start" wrap="nowrap" c="orange.4">
-                    <IconAlertTriangle size={16} style={{ flexShrink: 0, marginTop: 2 }} />
-                    <Text size="xs" c="orange.4">
-                        {t('simulator.raiseLevelHint')}
-                    </Text>
-                </Group>
-            ) : null}
+            <Text size="xs" c={levelGated ? 'red.5' : 'dimmed'} fw={levelGated ? 600 : undefined} ta="center">
+                {t('simulator.requiredLevel', { level: skill.level })}
+            </Text>
         </Stack>
     );
 }

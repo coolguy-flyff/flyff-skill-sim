@@ -25,7 +25,7 @@
         "renamePage": "Renombrar",
         "removePage": "Eliminar",
         "selectBaseForVariations": "Selecciona una habilidad base de 3ª clase para ver sus variaciones maestras.",
-        "raiseLevelHint": "Sube el nivel de tu personaje para desbloquear esta habilidad."
+        "requiredLevel": "Nivel requerido: {{level}}"
     },
     "tooltip": {
         "level": "Nivel",

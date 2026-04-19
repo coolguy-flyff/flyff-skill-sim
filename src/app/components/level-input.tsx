@@ -15,11 +15,11 @@ export function LevelInput({ level, onChange, highlight = false }: Props) {
     const { t } = useTranslation();
     const isMobile = useIsMobile();
 
-    const accent = 'var(--mantine-color-orange-6)';
+    const accent = 'var(--mantine-color-red-6)';
     const inputStyles = highlight
         ? { input: { borderColor: accent, boxShadow: `0 0 0 1px ${accent}` } }
         : undefined;
-    const labelColor = highlight ? 'orange.4' : 'dimmed';
+    const labelColor = highlight ? 'red.4' : 'dimmed';
 
     const input = (
         <NumberInput

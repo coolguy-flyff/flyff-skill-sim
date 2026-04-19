@@ -25,7 +25,7 @@
         "renamePage": "Rename",
         "removePage": "Remove",
         "selectBaseForVariations": "Select a base 3rd class skill to see its master variations.",
-        "raiseLevelHint": "Raise your character's level to unlock this skill."
+        "requiredLevel": "Required level: {{level}}"
     },
     "tooltip": {
         "level": "Level",

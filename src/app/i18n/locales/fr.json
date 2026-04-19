@@ -25,7 +25,7 @@
         "renamePage": "Renommer",
         "removePage": "Supprimer",
         "selectBaseForVariations": "Sélectionnez une compétence de base de 3e classe pour voir ses variations de maître.",
-        "raiseLevelHint": "Augmentez le niveau de votre personnage pour débloquer cette compétence."
+        "requiredLevel": "Niveau requis : {{level}}"
     },
     "tooltip": {
         "level": "Niveau",

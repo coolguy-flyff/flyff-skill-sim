@@ -5,6 +5,7 @@ import type { I18nString, SkillRecord } from '@engine/types';
 import { Icon } from './icon';
 import { getLocalized } from '../data/i18n-util';
 import { useFlyffData } from '../hooks/use-flyff-data';
+import { useEngineStore } from '../stores/engine-store';
 import { getParamLabel } from './param-labels';
 import {
     abilityIdentityKey,
@@ -832,9 +833,11 @@ function renderSynergiesSimple(synergies: SynergyEntry[], ctx: BodyCtx): ReactNo
 export function SkillTooltipBody({ skill, currentLevel, hideHeader = false, fullWidth = false }: Props) {
     const { t, i18n } = useTranslation();
     const { data } = useFlyffData();
+    const characterLevel = useEngineStore((s) => s.state?.level ?? 0);
     const effectiveLevel = currentLevel === 0 ? 1 : currentLevel;
     const locale = i18n.language;
     const labels: Record<string, I18nString> = data?.parameterLabels ?? {};
+    const requirementMet = characterLevel >= skill.level;
 
     const resolveSkillName = (id: number): string => {
         const s = data?.skillsById.get(id);
@@ -864,6 +867,14 @@ export function SkillTooltipBody({ skill, currentLevel, hideHeader = false, full
                             </Text>
                             <Text size="xs" c="dimmed" lh={1.1}>
                                 {t('tooltip.level')} {effectiveLevel}
+                            </Text>
+                            <Text
+                                size="xs"
+                                c={requirementMet ? 'dimmed' : 'red.5'}
+                                fw={requirementMet ? undefined : 600}
+                                lh={1.1}
+                            >
+                                {t('simulator.requiredLevel', { level: skill.level })}
                             </Text>
                         </Stack>
                     </Group>

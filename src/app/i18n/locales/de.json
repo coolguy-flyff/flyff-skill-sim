@@ -25,7 +25,7 @@
         "renamePage": "Umbenennen",
         "removePage": "Entfernen",
         "selectBaseForVariations": "Wähle einen Basis-Skill der 3. Klasse, um seine Meister-Variationen zu sehen.",
-        "raiseLevelHint": "Erhöhe dein Charakterlevel, um diesen Skill freizuschalten."
+        "requiredLevel": "Benötigtes Level: {{level}}"
     },
     "tooltip": {
         "level": "Level",

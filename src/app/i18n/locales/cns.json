@@ -25,7 +25,7 @@
         "renamePage": "重命名",
         "removePage": "删除",
         "selectBaseForVariations": "选择一个三转基础技能以查看其大师变体。",
-        "raiseLevelHint": "提高角色等级以解锁此技能。"
+        "requiredLevel": "所需等级：{{level}}"
     },
     "tooltip": {
         "level": "等级",
