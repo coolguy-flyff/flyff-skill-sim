@@ -24,7 +24,8 @@
         "duplicatePage": "Duplicar",
         "renamePage": "Renombrar",
         "removePage": "Eliminar",
-        "selectBaseForVariations": "Selecciona una habilidad base de 3ª clase para ver sus variaciones maestras."
+        "selectBaseForVariations": "Selecciona una habilidad base de 3ª clase para ver sus variaciones maestras.",
+        "raiseLevelHint": "Sube el nivel de tu personaje para desbloquear esta habilidad."
     },
     "tooltip": {
         "level": "Nivel",
@@ -46,6 +47,10 @@
         "attackScaling": "Escalado de ataque",
         "healScaling": "Escalado de sanación",
         "timeScaling": "Escalado de tiempo",
+        "chargeScaling": "Dec. Charging Time Scaling",
+        "rightHandWeaponAttack": "Right-Hand Weapon Attack",
+        "leftHandWeaponAttack": "Left-Hand Weapon Attack",
+        "shieldDefense": "Defensa con Escudo",
         "buffs": "Mejoras",
         "synergies": "Sinergias",
         "applies": "Aplica",

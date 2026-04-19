@@ -24,7 +24,8 @@
         "duplicatePage": "Dupliquer",
         "renamePage": "Renommer",
         "removePage": "Supprimer",
-        "selectBaseForVariations": "Sélectionnez une compétence de base de 3e classe pour voir ses variations de maître."
+        "selectBaseForVariations": "Sélectionnez une compétence de base de 3e classe pour voir ses variations de maître.",
+        "raiseLevelHint": "Augmentez le niveau de votre personnage pour débloquer cette compétence."
     },
     "tooltip": {
         "level": "Niveau",
@@ -46,6 +47,10 @@
         "attackScaling": "Échelle d'attaque",
         "healScaling": "Échelle de soin",
         "timeScaling": "Échelle de temps",
+        "chargeScaling": "Réduction du temps de charge",
+        "rightHandWeaponAttack": "Attaque arme main droite",
+        "leftHandWeaponAttack": "Attaque arme main gauche",
+        "shieldDefense": "Défense du bouclier",
         "buffs": "Buffs",
         "synergies": "Synergies",
         "applies": "Applique",

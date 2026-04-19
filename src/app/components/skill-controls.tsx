@@ -1,10 +1,15 @@
 import { Button, Group, Stack, Text, Tooltip as MantineTooltip } from '@mantine/core';
+import { IconAlertTriangle, IconArrowBackUp, IconChevronsUp } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 import type { SkillRecord } from '@engine/types';
 import { AllocationIssue } from '@engine/types';
 import { getSkillMaxLevel } from '@engine/class-tree';
 import { Icon } from './icon';
 import { getLocalized } from '../data/i18n-util';
+
+function isLevelGated(issue: AllocationIssue | null): boolean {
+    return issue === AllocationIssue.CHARACTER_LEVEL_TOO_LOW || issue === AllocationIssue.CLASS_NOT_LEARNED;
+}
 
 interface Props {
     skill: SkillRecord;
@@ -15,8 +20,6 @@ interface Props {
     onDecrement: () => void;
     onMax: () => void;
     onReset: () => void;
-    /** Center the +/-/Max/Reset row (used in the mobile sticky panel). */
-    centerActions?: boolean;
 }
 
 export function SkillControls({
@@ -28,7 +31,6 @@ export function SkillControls({
     onDecrement,
     onMax,
     onReset,
-    centerActions = false,
 }: Props) {
     const { t, i18n } = useTranslation();
     const max = getSkillMaxLevel(skill);
@@ -38,6 +40,7 @@ export function SkillControls({
     const incDisabled = canIncrementIssue !== null && canIncrementIssue !== AllocationIssue.OK;
     const decDisabled = canDecrementIssue !== null && canDecrementIssue !== AllocationIssue.OK;
     const incReason = incDisabled && canIncrementIssue ? t(`issue.${canIncrementIssue}`) : undefined;
+    const levelGated = isLevelGated(canIncrementIssue);
 
     return (
         <Stack gap="sm" w="100%">
@@ -53,7 +56,7 @@ export function SkillControls({
                 </Stack>
             </Group>
 
-            <Group gap="xs" justify={centerActions ? 'center' : undefined}>
+            <Group gap="xs" justify="center">
                 <MantineTooltip label={incReason} disabled={!incReason} withinPortal>
                     <Button variant="default" size="md" px={0} w={44} onClick={onIncrement} disabled={incDisabled} aria-label="+">
                         +
@@ -70,13 +73,44 @@ export function SkillControls({
                 >
                     −
                 </Button>
-                <Button variant="filled" color="cyan" size="md" onClick={onMax} disabled={incDisabled && currentLevel === 0}>
-                    {t('simulator.max')}
-                </Button>
-                <Button variant="subtle" color="red" size="md" onClick={onReset} disabled={currentLevel <= 0}>
-                    {t('simulator.reset')}
-                </Button>
+                <MantineTooltip label={t('simulator.max')} withinPortal>
+                    <Button
+                        variant="filled"
+                        color="cyan"
+                        size="md"
+                        px={0}
+                        w={44}
+                        onClick={onMax}
+                        disabled={incDisabled && currentLevel === 0}
+                        aria-label={t('simulator.max')}
+                    >
+                        <IconChevronsUp size={20} />
+                    </Button>
+                </MantineTooltip>
+                <MantineTooltip label={t('simulator.reset')} withinPortal>
+                    <Button
+                        variant="light"
+                        color="red"
+                        size="md"
+                        px={0}
+                        w={44}
+                        onClick={onReset}
+                        disabled={currentLevel <= 0}
+                        aria-label={t('simulator.reset')}
+                    >
+                        <IconArrowBackUp size={20} />
+                    </Button>
+                </MantineTooltip>
             </Group>
+
+            {levelGated ? (
+                <Group gap={6} align="flex-start" wrap="nowrap" c="orange.4">
+                    <IconAlertTriangle size={16} style={{ flexShrink: 0, marginTop: 2 }} />
+                    <Text size="xs" c="orange.4">
+                        {t('simulator.raiseLevelHint')}
+                    </Text>
+                </Group>
+            ) : null}
         </Stack>
     );
 }

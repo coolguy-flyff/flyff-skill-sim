@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 import type { ClassRecord, SkillRecord } from '@engine/types';
+import { AllocationIssue } from '@engine/types';
 import { classifySkill } from '@engine/variations';
 import { ClassIndex, getSkillMaxLevel } from '@engine/class-tree';
 import { decodeState } from '@engine/serializer';
@@ -142,6 +143,11 @@ export function SimulatorPage() {
     const remaining = engine.getRemainingPoints();
 
     const selectedSkill = selectedSkillId != null ? engine.getSkill(selectedSkillId) : null;
+    const selectedIncrementIssue = selectedSkill ? engine.canIncrementCascade(selectedSkill.id).issue : null;
+    const selectedDecrementIssue = selectedSkill ? engine.canDecrement(selectedSkill.id).issue : null;
+    const selectedLevelGated =
+        selectedIncrementIssue === AllocationIssue.CHARACTER_LEVEL_TOO_LOW ||
+        selectedIncrementIssue === AllocationIssue.CLASS_NOT_LEARNED;
 
     const onClassTabChange = (classId: number) => {
         setActiveClassTab(classId);
@@ -257,7 +263,7 @@ export function SimulatorPage() {
                                 </Group>
                             </Group>
                             <Group justify="space-between" gap="md" align="center" wrap="nowrap">
-                                <LevelInput level={state.level} onChange={setLevel} />
+                                <LevelInput level={state.level} onChange={setLevel} highlight={selectedLevelGated} />
                                 <PointsIndicator remaining={remaining} total={total} />
                             </Group>
                         </Stack>
@@ -311,7 +317,7 @@ export function SimulatorPage() {
                                     transform: 'translateX(-50%)',
                                 }}
                             >
-                                <LevelInput level={state.level} onChange={setLevel} />
+                                <LevelInput level={state.level} onChange={setLevel} highlight={selectedLevelGated} />
                                 <PointsIndicator remaining={remaining} total={total} />
                             </Group>
                         </Box>
@@ -377,8 +383,8 @@ export function SimulatorPage() {
                                         <SkillControls
                                             skill={selectedSkill}
                                             currentLevel={allocations[selectedSkill.id] ?? 0}
-                                            canIncrementIssue={engine.canIncrementCascade(selectedSkill.id).issue}
-                                            canDecrementIssue={engine.canDecrement(selectedSkill.id).issue}
+                                            canIncrementIssue={selectedIncrementIssue}
+                                            canDecrementIssue={selectedDecrementIssue}
                                             onIncrement={() => incrementAction(selectedSkill.id, 1)}
                                             onDecrement={() => incrementAction(selectedSkill.id, -1)}
                                             onMax={() => maxAction(selectedSkill.id)}
@@ -424,13 +430,12 @@ export function SimulatorPage() {
                                 <SkillControls
                                     skill={selectedSkill}
                                     currentLevel={allocations[selectedSkill.id] ?? 0}
-                                    canIncrementIssue={engine.canIncrementCascade(selectedSkill.id).issue}
-                                    canDecrementIssue={engine.canDecrement(selectedSkill.id).issue}
+                                    canIncrementIssue={selectedIncrementIssue}
+                                    canDecrementIssue={selectedDecrementIssue}
                                     onIncrement={() => incrementAction(selectedSkill.id, 1)}
                                     onDecrement={() => incrementAction(selectedSkill.id, -1)}
                                     onMax={() => maxAction(selectedSkill.id)}
                                     onReset={() => resetAction(selectedSkill.id)}
-                                    centerActions
                                 />
                                 <ActionIcon
                                     variant="subtle"

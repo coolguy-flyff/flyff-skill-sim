@@ -24,7 +24,8 @@
         "duplicatePage": "Duplizieren",
         "renamePage": "Umbenennen",
         "removePage": "Entfernen",
-        "selectBaseForVariations": "Wähle einen Basis-Skill der 3. Klasse, um seine Meister-Variationen zu sehen."
+        "selectBaseForVariations": "Wähle einen Basis-Skill der 3. Klasse, um seine Meister-Variationen zu sehen.",
+        "raiseLevelHint": "Erhöhe dein Charakterlevel, um diesen Skill freizuschalten."
     },
     "tooltip": {
         "level": "Level",
@@ -46,6 +47,10 @@
         "attackScaling": "Angriffs-Skalierung",
         "healScaling": "Heil-Skalierung",
         "timeScaling": "Zeit-Skalierung",
+        "chargeScaling": "Dec. Charging Time Scaling",
+        "rightHandWeaponAttack": "Rechte-Hand-Waffen-Angriff",
+        "leftHandWeaponAttack": "Linke-Hand-Waffen-Angriff",
+        "shieldDefense": "Schildverteidigung",
         "buffs": "Buffs",
         "synergies": "Synergien",
         "applies": "Wendet",

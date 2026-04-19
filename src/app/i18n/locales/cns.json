@@ -24,7 +24,8 @@
         "duplicatePage": "复制",
         "renamePage": "重命名",
         "removePage": "删除",
-        "selectBaseForVariations": "选择一个三转基础技能以查看其大师变体。"
+        "selectBaseForVariations": "选择一个三转基础技能以查看其大师变体。",
+        "raiseLevelHint": "提高角色等级以解锁此技能。"
     },
     "tooltip": {
         "level": "等级",
@@ -46,6 +47,10 @@
         "attackScaling": "攻击加成",
         "healScaling": "治疗加成",
         "timeScaling": "时间加成",
+        "chargeScaling": "Dec. Charging Time Scaling",
+        "rightHandWeaponAttack": "右手武器攻击力",
+        "leftHandWeaponAttack": "左手武器攻击力",
+        "shieldDefense": "护盾防御力",
         "buffs": "增益",
         "synergies": "协同",
         "applies": "施加",

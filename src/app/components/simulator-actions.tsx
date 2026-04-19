@@ -71,7 +71,7 @@ export function SimulatorActions({ onShare, onResetAll, shareCopied }: Props) {
                     <Text size="xs">{t('simulator.shareCopied')}</Text>
                 </Popover.Dropdown>
             </Popover>
-            <Button size="sm" variant="subtle" color="red" onClick={onResetAll}>
+            <Button size="sm" variant="light" color="red" onClick={onResetAll}>
                 {t('simulator.resetAll')}
             </Button>
             <LanguageSelector />

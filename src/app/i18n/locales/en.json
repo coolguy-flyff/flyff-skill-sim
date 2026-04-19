@@ -24,7 +24,8 @@
         "duplicatePage": "Duplicate",
         "renamePage": "Rename",
         "removePage": "Remove",
-        "selectBaseForVariations": "Select a base 3rd class skill to see its master variations."
+        "selectBaseForVariations": "Select a base 3rd class skill to see its master variations.",
+        "raiseLevelHint": "Raise your character's level to unlock this skill."
     },
     "tooltip": {
         "level": "Level",
@@ -46,6 +47,10 @@
         "attackScaling": "Attack Scaling",
         "healScaling": "Heal Scaling",
         "timeScaling": "Time Scaling",
+        "chargeScaling": "Dec. Charging Time Scaling",
+        "rightHandWeaponAttack": "Right-Hand Weapon Attack",
+        "leftHandWeaponAttack": "Left-Hand Weapon Attack",
+        "shieldDefense": "Shield Defense",
         "buffs": "Buffs",
         "synergies": "Synergies",
         "applies": "Applies",
