@@ -44,8 +44,11 @@ export interface DamageMultEntry {
 export interface LevelLike {
     consumedMP?: number;
     consumedFP?: number;
+    consumedCurrentHPRate?: number;
+    consumedMaxHPRate?: number;
     cooldown?: number;
     casting?: number;
+    chargingTime?: number;
     duration?: number;
     durationPVP?: number;
     dotTick?: number;
@@ -56,6 +59,19 @@ export interface LevelLike {
     probabilityPVP?: number;
     flyBackProbability?: number;
     damageMultiplier?: DamageMultEntry[];
+    maxTargets?: number;
+    maxTargetsPVP?: number;
+    maxSkillStacks?: number;
+    maxSkillStacksPVP?: number;
+    /** Present (as the string "true") when the skill's `maxSkillStacks` should
+     *  be surfaced to the player. Internal stack-tracking skills set
+     *  maxSkillStacks without this flag and don't display the line. */
+    stackAbilities?: string;
+    reflectedDamagePVE?: number;
+    reflectedDamagePVP?: number;
+    wallLives?: number;
+    /** Positive → trigger when HP ≥ value%; negative → trigger when HP ≤ |value|%. */
+    requiredHPThresholdRate?: number;
     abilities?: AbilityEntry[];
     synergies?: SynergyEntry[];
     scalingParameters?: ScalingParam[];

@@ -25,14 +25,14 @@
         "renamePage": "Rename",
         "removePage": "Remove",
         "selectBaseForVariations": "Select a base 3rd class skill to see its master variations.",
-        "requiredLevel": "Required level: {{level}}"
+        "requiredLevel": "Required Level: {{level}}"
     },
     "tooltip": {
         "level": "Level",
         "element": "Element",
         "cooldown": "Cooldown",
-        "casting": "Casting time",
-        "range": "Spell range",
+        "casting": "Casting Time",
+        "range": "Spell Range",
         "duration": "Duration",
         "baseTime": "Base Time",
         "dotTick": "DoT Tick",
@@ -40,9 +40,9 @@
         "lvShort": "Lv.",
         "pve": "PvE",
         "pvp": "PvP",
-        "baseDamage": "Base damage",
-        "damageMultiplier": "Damage multiplier",
-        "baseHeal": "Base heal",
+        "baseDamage": "Base Damage",
+        "damageMultiplier": "Damage Multiplier",
+        "baseHeal": "Base Heal",
         "scaling": "Scaling",
         "attackScaling": "Attack Scaling",
         "healScaling": "Heal Scaling",
@@ -61,7 +61,16 @@
         "masterVariation": "Master Variation",
         "recoverHpWhenBelow": "Recover HP when below {{value}}% HP",
         "mpCost": "MP",
-        "fpCost": "FP"
+        "fpCost": "FP",
+        "chargingTime": "Charging Time",
+        "numberOfLives": "Number of lives",
+        "reflectedDamage": "Reflected Damage",
+        "maxTargets": "Max Targets",
+        "hpThreshold": "HP Threshold",
+        "hpThresholdBelow": "Below",
+        "maxStacks": "Max Stacks",
+        "consumesCurrentHP": "Consumes {{value}}% of Current HP",
+        "consumesMaxHP": "Consumes {{value}}% of Max HP"
     },
     "issue": {
         "CLASS_NOT_LEARNED": "Not learned at this level",

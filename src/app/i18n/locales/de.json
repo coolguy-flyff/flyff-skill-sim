@@ -61,7 +61,16 @@
         "masterVariation": "Meister-Variation",
         "recoverHpWhenBelow": "HP wiederherstellen, wenn unter {{value}}% HP",
         "mpCost": "MP",
-        "fpCost": "FP"
+        "fpCost": "FP",
+        "chargingTime": "Aufladezeit",
+        "numberOfLives": "Anzahl Leben",
+        "reflectedDamage": "Reflektierter Schaden",
+        "maxTargets": "Max. Ziele",
+        "hpThreshold": "HP-Schwelle",
+        "hpThresholdBelow": "Unter",
+        "maxStacks": "Max. Stapel",
+        "consumesCurrentHP": "Verbraucht {{value}}% der aktuellen HP",
+        "consumesMaxHP": "Verbraucht {{value}}% der max. HP"
     },
     "issue": {
         "CLASS_NOT_LEARNED": "Klasse noch nicht erlernt",

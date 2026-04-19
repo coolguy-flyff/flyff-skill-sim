@@ -61,7 +61,16 @@
         "masterVariation": "大师变体",
         "recoverHpWhenBelow": "HP低于{{value}}%时恢复HP",
         "mpCost": "MP",
-        "fpCost": "FP"
+        "fpCost": "FP",
+        "chargingTime": "蓄力时间",
+        "numberOfLives": "攻击次数",
+        "reflectedDamage": "反射伤害",
+        "maxTargets": "最大目标数",
+        "hpThreshold": "生命值阈值",
+        "hpThresholdBelow": "低于",
+        "maxStacks": "最大叠加",
+        "consumesCurrentHP": "消耗当前生命值的 {{value}}%",
+        "consumesMaxHP": "消耗最大生命值的 {{value}}%"
     },
     "issue": {
         "CLASS_NOT_LEARNED": "尚未学习此职业",

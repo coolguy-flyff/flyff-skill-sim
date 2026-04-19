@@ -61,7 +61,16 @@
         "masterVariation": "Variation de maître",
         "recoverHpWhenBelow": "Récupérer des PV lorsque les PV tombent sous {{value}}%",
         "mpCost": "PM",
-        "fpCost": "PF"
+        "fpCost": "PF",
+        "chargingTime": "Temps de charge",
+        "numberOfLives": "Vies restantes",
+        "reflectedDamage": "Renvois des dégâts",
+        "maxTargets": "Cibles maximales",
+        "hpThreshold": "Seuil PV",
+        "hpThresholdBelow": "inférieur à",
+        "maxStacks": "Accumulations max.",
+        "consumesCurrentHP": "Consomme {{value}}% des PV actuels",
+        "consumesMaxHP": "Consomme {{value}}% des PV max."
     },
     "issue": {
         "CLASS_NOT_LEARNED": "Classe non apprise",

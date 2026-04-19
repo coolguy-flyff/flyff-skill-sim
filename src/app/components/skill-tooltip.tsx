@@ -358,8 +358,11 @@ function SkillBody({
 
     const mp = pickScalar(skill, currentLevel, compareWith, 'consumedMP');
     const fp = pickScalar(skill, currentLevel, compareWith, 'consumedFP');
+    const hpCurRate = pickScalar(skill, currentLevel, compareWith, 'consumedCurrentHPRate');
+    const hpMaxRate = pickScalar(skill, currentLevel, compareWith, 'consumedMaxHPRate');
     const cooldown = pickScalar(skill, currentLevel, compareWith, 'cooldown');
     const casting = pickScalar(skill, currentLevel, compareWith, 'casting');
+    const chargingTime = pickScalar(skill, currentLevel, compareWith, 'chargingTime');
     const spellRange = pickScalar(skill, currentLevel, compareWith, 'spellRange');
     const duration = pickScalar(skill, currentLevel, compareWith, 'duration');
     const durationPVP = pickScalar(skill, currentLevel, compareWith, 'durationPVP');
@@ -367,9 +370,17 @@ function SkillBody({
     const probability = pickScalar(skill, currentLevel, compareWith, 'probability');
     const probabilityPVP = pickScalar(skill, currentLevel, compareWith, 'probabilityPVP');
     const flyBack = pickScalar(skill, currentLevel, compareWith, 'flyBackProbability');
+    const hpThreshold = pickScalar(skill, currentLevel, compareWith, 'requiredHPThresholdRate');
     const minAttack = pickScalar(skill, currentLevel, compareWith, 'minAttack');
     const maxAttack = pickScalar(skill, currentLevel, compareWith, 'maxAttack');
     const dmgMultArr = pickScalar(skill, currentLevel, compareWith, 'damageMultiplier');
+    const maxTargets = pickScalar(skill, currentLevel, compareWith, 'maxTargets');
+    const maxTargetsPVP = pickScalar(skill, currentLevel, compareWith, 'maxTargetsPVP');
+    const reflectedPVE = pickScalar(skill, currentLevel, compareWith, 'reflectedDamagePVE');
+    const reflectedPVP = pickScalar(skill, currentLevel, compareWith, 'reflectedDamagePVP');
+    const wallLives = pickScalar(skill, currentLevel, compareWith, 'wallLives');
+    const maxStacks = pickScalar(skill, currentLevel, compareWith, 'maxSkillStacks');
+    const maxStacksPVP = pickScalar(skill, currentLevel, compareWith, 'maxSkillStacksPVP');
 
     // Damage min/max are shown together; changed if EITHER is.
     const damageChanged = minAttack.changed || maxAttack.changed;
@@ -378,6 +389,13 @@ function SkillBody({
     const durationChanged = duration.changed || durationPVP.changed;
 
     const probabilityChanged = probability.changed || probabilityPVP.changed;
+    const maxTargetsChanged = maxTargets.changed || maxTargetsPVP.changed;
+    const reflectedChanged = reflectedPVE.changed || reflectedPVP.changed;
+    const stacksChanged = maxStacks.changed || maxStacksPVP.changed;
+
+    // The stacks line only applies to player-visible stack mechanics. Internal
+    // bookkeeping skills set maxSkillStacks without `stackAbilities: "true"`.
+    const showStacks = mainData.stackAbilities === 'true';
 
     // Classification driven by max-vs-max.
     const scalingDiff = isDiff
@@ -413,6 +431,9 @@ function SkillBody({
         label: string,
         format: (v: T) => string,
         pick: ScalarPick<T | undefined>,
+        /** When true, `format(value)` is used verbatim without a "label: " prefix.
+         *  Used for full-sentence lines like "Consumes X% of Current HP". */
+        plain = false,
     ): ReactNode => {
         const baseDefined = pick.base !== undefined && pick.base !== null;
         const varDefined = pick.variation !== undefined && pick.variation !== null;
@@ -423,6 +444,7 @@ function SkillBody({
 
         const baseText = baseDefined ? format(pick.base as T) : null;
         const varText = varDefined ? format(pick.variation as T) : null;
+        const prefix = plain ? '' : `${label}: `;
 
         // Not changed, or the two sides format to the same text — render once.
         // Prefer the variation's value (current-level) over base[max] so the
@@ -430,7 +452,7 @@ function SkillBody({
         if (!pick.changed || baseText === varText) {
             return (
                 <Text key={key} size="xs">
-                    {label}: {varText ?? baseText}
+                    {prefix}{varText ?? baseText}
                 </Text>
             );
         }
@@ -440,7 +462,7 @@ function SkillBody({
         if (baseText === null) {
             return (
                 <Text key={key} size="xs" c={COLOR_VARIATION}>
-                    {label}: {varText}
+                    {prefix}{varText}
                 </Text>
             );
         }
@@ -449,7 +471,7 @@ function SkillBody({
         if (varText === null) {
             return (
                 <Text key={key} size="xs" c={COLOR_VARIATION} style={{ textDecoration: 'line-through' }}>
-                    {label}: {baseText}
+                    {prefix}{baseText}
                 </Text>
             );
         }
@@ -458,7 +480,7 @@ function SkillBody({
         // new value tinted violet.
         return (
             <Text key={key} size="xs">
-                {label}: {baseText}{' '}
+                {prefix}{baseText}{' '}
                 <Text span c={COLOR_VARIATION} fw={700}>
                     ➜ {varText}
                 </Text>
@@ -527,6 +549,59 @@ function SkillBody({
         variation: dmgMultArr.variation?.[0]?.multiplier,
         changed: dmgMultArr.changed,
     };
+    const maxTargetsPair: ScalarPick<[number | undefined, number | undefined]> = {
+        base: [maxTargets.base, maxTargetsPVP.base],
+        variation: [maxTargets.variation, maxTargetsPVP.variation],
+        changed: maxTargetsChanged,
+    };
+    const reflectedPair: ScalarPick<[number | undefined, number | undefined]> = {
+        base: [reflectedPVE.base, reflectedPVP.base],
+        variation: [reflectedPVE.variation, reflectedPVP.variation],
+        changed: reflectedChanged,
+    };
+    const stacksPair: ScalarPick<[number | undefined, number | undefined]> = {
+        base: [maxStacks.base, maxStacksPVP.base],
+        variation: [maxStacks.variation, maxStacksPVP.variation],
+        changed: stacksChanged,
+    };
+
+    const pvpTag = t('tooltip.pvp');
+
+    const formatCountPair = (d: [number | undefined, number | undefined]): string | null => {
+        const [pve, pvp] = d;
+
+        if (pve === undefined || pve === null) {
+            return null;
+        }
+
+        const showPvp = pvp !== undefined && pvp !== null && pvp !== pve;
+
+        return showPvp ? `${pve} / ${pvp} (${pvpTag})` : String(pve);
+    };
+
+    const formatReflectPair = (d: [number | undefined, number | undefined]): string | null => {
+        const [pve, pvp] = d;
+
+        if ((pve === undefined || pve === null) && (pvp === undefined || pvp === null)) {
+            return null;
+        }
+
+        if (pve !== undefined && pve !== null && pvp !== undefined && pvp !== null && pve !== pvp) {
+            return `${pve}% / ${pvp}% (${pvpTag})`;
+        }
+
+        return `${pve ?? pvp}%`;
+    };
+
+    const formatHpThreshold = (v: number): string => {
+        if (v < 0) {
+            return `${t('tooltip.hpThresholdBelow')} ${Math.abs(v)}%`;
+        }
+
+        return `${v}%`;
+    };
+
+    const stacksLabel = t('tooltip.maxStacks');
 
     // Row wrappers that early-exit when formatted text is null on both sides.
     const compoundRow = <T,>(
@@ -581,15 +656,23 @@ function SkillBody({
             <Stack gap={2}>
                 {scalarRow('mp', t('tooltip.mpCost'), (v: number) => String(v), mp)}
                 {scalarRow('fp', t('tooltip.fpCost'), (v: number) => String(v), fp)}
+                {scalarRow('hpCur', '', (v: number) => t('tooltip.consumesCurrentHP', { value: v }), hpCurRate, true)}
+                {scalarRow('hpMax', '', (v: number) => t('tooltip.consumesMaxHP', { value: v }), hpMaxRate, true)}
                 {scalarRow('cd', t('tooltip.cooldown'), formatDurationSeconds, cooldown)}
                 {scalarRow('cast', t('tooltip.casting'), formatDurationSeconds, casting)}
+                {scalarRow('charge', t('tooltip.chargingTime'), formatDurationSeconds, chargingTime)}
                 {scalarRow('range', t('tooltip.range'), (v: number) => `${v}m`, spellRange)}
                 {compoundRow('dur', t('tooltip.baseTime'), durationPair, formatDurationPair)}
                 {scalarRow('dot', t('tooltip.dotTick'), formatDurationSeconds, dotTick)}
                 {compoundRow('prob', t('tooltip.probability'), probabilityPair, formatProbabilityPair)}
                 {scalarRow('flyback', t('tooltip.knockdownProbability'), (v: number) => `${v}%`, flyBack)}
+                {scalarRow('hpThresh', t('tooltip.hpThreshold'), formatHpThreshold, hpThreshold)}
                 {compoundRow('dmg', t('tooltip.baseDamage'), damagePair, formatDamagePair)}
                 {scalarRow('mult', t('tooltip.damageMultiplier'), (v: number) => v.toFixed(2), dmgMultPick)}
+                {compoundRow('maxT', t('tooltip.maxTargets'), maxTargetsPair, formatCountPair)}
+                {compoundRow('refl', t('tooltip.reflectedDamage'), reflectedPair, formatReflectPair)}
+                {scalarRow('wall', t('tooltip.numberOfLives'), (v: number) => String(v), wallLives)}
+                {showStacks ? compoundRow('stacks', stacksLabel, stacksPair, formatCountPair) : null}
             </Stack>
 
             {renderScalings(mainData, baseMaxData, scalingDiff, isDiff, locale, labels, t)}
@@ -622,8 +705,9 @@ function SkillBody({
                         </Text>
                     ) : null}
                     {!isDiff && mainDesc ? (
-                        // Non-diff mode: main skill owns the single description line.
-                        null
+                        <Text size="xs" style={{ whiteSpace: 'pre-wrap' }}>
+                            {mainDesc}
+                        </Text>
                     ) : null}
                 </>
             ) : null}
@@ -825,19 +909,52 @@ function renderSynergiesSimple(synergies: SynergyEntry[], ctx: BodyCtx): ReactNo
     );
 }
 
+/** Extracts the distinguishing part of a variation's name by stripping the
+ *  base-skill prefix and any wrapping parentheses. e.g.
+ *  ("Hammer of Judgement (Justice Hammer)", "Hammer of Judgement") → "Justice Hammer".
+ *  Falls back to the full variation name if the pattern doesn't match. */
+function variationShortName(variationName: string, baseName: string): string {
+    let trimmed = variationName.trim();
+
+    if (baseName && trimmed.startsWith(baseName)) {
+        trimmed = trimmed.slice(baseName.length).trim();
+    }
+
+    if (trimmed.startsWith('(') && trimmed.endsWith(')')) {
+        trimmed = trimmed.slice(1, -1).trim();
+    }
+
+    return trimmed || variationName;
+}
+
 /**
  * Skill tooltip body. Level-0 skills show Lv. 1 stats. For master variations
  * (skills with `inheritSkill`), renders a unified diff view — one body where
  * only the fields the variation actually changes appear in violet.
+ *
+ * When the selected skill is a BASE skill and the player has already chosen
+ * one of its master variations, the body auto-swaps to that variation's diff
+ * view (it's what the player actually has) while the header keeps showing
+ * the base's name + current level.
  */
 export function SkillTooltipBody({ skill, currentLevel, hideHeader = false, fullWidth = false }: Props) {
     const { t, i18n } = useTranslation();
     const { data } = useFlyffData();
     const characterLevel = useEngineStore((s) => s.state?.level ?? 0);
-    const effectiveLevel = currentLevel === 0 ? 1 : currentLevel;
+    const engine = useEngineStore((s) => s.engine);
     const locale = i18n.language;
     const labels: Record<string, I18nString> = data?.parameterLabels ?? {};
     const requirementMet = characterLevel >= skill.level;
+
+    // Auto-swap: if this is a base skill with an allocated variation, render
+    // the variation's body instead. Header stays with the base though.
+    const role = engine?.classifySkill(skill.id) ?? null;
+    const allocatedVariation = role === 'base' ? engine?.getSelectedVariation(skill.id) ?? null : null;
+    const allocations = engine?.getAllocations() ?? {};
+    const bodySkill: SkillRecord = allocatedVariation ?? skill;
+    const bodyCurrentLevel = allocatedVariation ? allocations[allocatedVariation.id] ?? 0 : currentLevel;
+    const headerEffectiveLevel = currentLevel === 0 ? 1 : currentLevel;
+    const bodyEffectiveLevel = bodyCurrentLevel === 0 ? 1 : bodyCurrentLevel;
 
     const resolveSkillName = (id: number): string => {
         const s = data?.skillsById.get(id);
@@ -852,8 +969,25 @@ export function SkillTooltipBody({ skill, currentLevel, hideHeader = false, full
         t: t as BodyCtx['t'],
     };
 
-    const inheritId = (skill as { inheritSkill?: number }).inheritSkill;
+    const inheritId = (bodySkill as { inheritSkill?: number }).inheritSkill;
     const baseSkill = inheritId ? data?.skillsById.get(inheritId) : undefined;
+
+    const variationLabel = (() => {
+        if (!baseSkill) {
+            return null;
+        }
+
+        if (!allocatedVariation) {
+            return t('tooltip.masterVariation');
+        }
+
+        const shortName = variationShortName(
+            getLocalized(allocatedVariation.name, locale),
+            getLocalized(skill.name, locale),
+        );
+
+        return `${t('tooltip.masterVariation')}: ${shortName} ${t('tooltip.lvShort')} ${bodyEffectiveLevel}`;
+    })();
 
     return (
         <Stack gap={6} maw={fullWidth ? undefined : 320}>
@@ -866,7 +1000,7 @@ export function SkillTooltipBody({ skill, currentLevel, hideHeader = false, full
                                 {getLocalized(skill.name, locale)}
                             </Text>
                             <Text size="xs" c="dimmed" lh={1.1}>
-                                {t('tooltip.level')} {effectiveLevel}
+                                {t('tooltip.level')} {headerEffectiveLevel}
                             </Text>
                             <Text
                                 size="xs"
@@ -882,15 +1016,15 @@ export function SkillTooltipBody({ skill, currentLevel, hideHeader = false, full
                 </>
             )}
 
-            {baseSkill ? (
+            {variationLabel ? (
                 <Text size="xs" fw={700} c={COLOR_VARIATION}>
-                    {t('tooltip.masterVariation')}
+                    {variationLabel}
                 </Text>
             ) : null}
 
             <SkillBody
-                skill={skill}
-                currentLevel={effectiveLevel}
+                skill={bodySkill}
+                currentLevel={bodyEffectiveLevel}
                 compareWith={baseSkill}
                 ctx={ctx}
             />

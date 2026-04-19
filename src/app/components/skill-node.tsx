@@ -52,6 +52,8 @@ export function SkillNode({
             color="dark"
             p="sm"
             radius="md"
+            multiline
+            w={340}
         >
             <button
                 type="button"
