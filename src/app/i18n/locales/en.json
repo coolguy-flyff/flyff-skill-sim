@@ -3,6 +3,10 @@
         "title": "Skill Simulator for Flyff Universe",
         "subtitle": "Plan your 3rd class build and share it with friends"
     },
+    "loading": {
+        "skillData": "Loading skill data…",
+        "pleaseWait": "Please wait"
+    },
     "home": {
         "pickClass": "Pick a class to start"
     },

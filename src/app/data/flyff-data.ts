@@ -12,6 +12,84 @@ export interface FlyffData {
     parameterLabels: Record<string, I18nString>;
 }
 
+declare global {
+    interface Window {
+        /**
+         * Decompressed file sizes injected by `tools/prerender.ts` so progress
+         * tracking can divide by an accurate denominator. Compressed
+         * `Content-Length` headers don't match the decompressed bytes the
+         * stream reader gives us, so we use these embedded numbers instead.
+         */
+        __FLYFF_SIZES?: { class: number; skill: number; params: number };
+    }
+}
+
+/** Conservative fallback if the prerender didn't inject sizes (dev mode, etc.).
+ *  Off by a bit is fine — progress just won't land exactly at 100%. */
+const FALLBACK_SIZES = { class: 50_000, skill: 3_300_000, params: 100_000 };
+
+type ProgressListener = (fraction: number) => void;
+
+const progressListeners = new Set<ProgressListener>();
+let lastFraction = 0;
+
+/** Subscribe to fetch progress (0..1). Listener fires on each chunk read.
+ *  Returns an unsubscribe function. The most recent value is replayed
+ *  immediately so late subscribers don't show 0% if loading is already partial. */
+export function onLoadProgress(listener: ProgressListener): () => void {
+    progressListeners.add(listener);
+    listener(lastFraction);
+
+    return () => {
+        progressListeners.delete(listener);
+    };
+}
+
+function emitProgress(fraction: number) {
+    lastFraction = fraction;
+
+    for (const listener of progressListeners) {
+        listener(fraction);
+    }
+}
+
+/**
+ * Streams a fetch response, calling `onChunk` with each newly-loaded byte
+ * count so callers can track progress. Falls back to a non-streaming read
+ * if `response.body` isn't available (very old browsers / CORS edge cases).
+ */
+async function fetchStreaming(url: string, onChunk: (loaded: number) => void): Promise<string> {
+    const res = await fetch(url);
+
+    if (!res.ok) {
+        throw new Error(`Failed to fetch ${url}: ${res.status} ${res.statusText}`);
+    }
+
+    if (!res.body) {
+        return res.text();
+    }
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let text = '';
+    let loaded = 0;
+
+    while (true) {
+        const { done, value } = await reader.read();
+
+        if (done) {
+            text += decoder.decode();
+            break;
+        }
+
+        text += decoder.decode(value, { stream: true });
+        loaded += value.length;
+        onChunk(loaded);
+    }
+
+    return text;
+}
+
 let cached: Promise<FlyffData> | null = null;
 
 /** Lazily loads and memoizes the scraped game data. */
@@ -21,21 +99,35 @@ export function loadFlyffData(): Promise<FlyffData> {
     }
 
     cached = (async () => {
-        const [classesRes, skillsRes, paramsRes] = await Promise.all([
-            fetch('/data/class.json'),
-            fetch('/data/skill.json'),
-            fetch('/data/parameter-labels.json'),
-        ]);
+        const sizes = window.__FLYFF_SIZES ?? FALLBACK_SIZES;
+        const total = sizes.class + sizes.skill + sizes.params;
+        const loaded = { class: 0, skill: 0, params: 0 };
 
-        if (!classesRes.ok || !skillsRes.ok || !paramsRes.ok) {
-            throw new Error('Failed to load Flyff data');
+        function update() {
+            const sum = loaded.class + loaded.skill + loaded.params;
+            emitProgress(Math.min(1, sum / total));
         }
 
-        const [classes, skills, parameterLabels] = (await Promise.all([
-            classesRes.json(),
-            skillsRes.json(),
-            paramsRes.json(),
-        ])) as [ClassRecord[], SkillRecord[], Record<string, I18nString>];
+        const [classesText, skillsText, paramsText] = await Promise.all([
+            fetchStreaming('/data/class.json', (n) => {
+                loaded.class = n;
+                update();
+            }),
+            fetchStreaming('/data/skill.json', (n) => {
+                loaded.skill = n;
+                update();
+            }),
+            fetchStreaming('/data/parameter-labels.json', (n) => {
+                loaded.params = n;
+                update();
+            }),
+        ]);
+
+        emitProgress(1);
+
+        const classes = JSON.parse(classesText) as ClassRecord[];
+        const skills = JSON.parse(skillsText) as SkillRecord[];
+        const parameterLabels = JSON.parse(paramsText) as Record<string, I18nString>;
 
         return {
             classes,

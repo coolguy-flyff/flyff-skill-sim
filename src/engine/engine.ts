@@ -617,7 +617,12 @@ function normalizeState(state: CharacterState): CharacterState {
 export function createInitialState(classId: number): CharacterState {
     return {
         classId,
-        level: 1,
+        // Default to max level so a fresh visit to `/c/<class>` shows the
+        // full named-class tree rather than the tier-1 Vagrant subset —
+        // matches user intent ("I'm on /c/templar to plan a Templar build")
+        // and keeps the SSG prerender's content consistent with what the
+        // client hydrates to, so there's no post-hydration content flip.
+        level: MAX_CHARACTER_LEVEL,
         pages: [{ name: '', allocations: {} }],
         activePageIndex: 0,
     };

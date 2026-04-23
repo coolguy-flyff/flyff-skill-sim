@@ -1,4 +1,4 @@
-import { Alert, Container, Group, Loader, SimpleGrid, Stack, Text, Title } from '@mantine/core';
+import { Alert, Container, Group, SimpleGrid, Stack, Text, Title } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useFlyffData } from '../hooks/use-flyff-data';
@@ -6,6 +6,7 @@ import { ClassCard } from '../components/class-card';
 import { LanguageSelector } from '../components/language-selector';
 import { ColorSchemeToggle } from '../components/color-scheme-toggle';
 import { CopyrightFooter } from '../components/copyright-footer';
+import { LoadingScreen } from '../components/loading-screen';
 import { THIRD_CLASS_NAMES } from '@engine/constants';
 import type { ClassRecord } from '@engine/types';
 import { slugifyClass } from '../data/class-slug';
@@ -34,6 +35,10 @@ export function HomePage() {
         navigate(`/c/${slugifyClass(thirdClass.name.en)}`);
     };
 
+    if (loading) {
+        return <LoadingScreen />;
+    }
+
     return (
         <>
             <Container size="lg" py="md">
@@ -55,12 +60,6 @@ export function HomePage() {
                 <Text size="sm" c="dimmed" ta="center" mb="lg">
                     {t('home.pickClass')}
                 </Text>
-
-                {loading ? (
-                    <Group justify="center" py="xl">
-                        <Loader />
-                    </Group>
-                ) : null}
 
                 {error ? (
                     <Alert color="red" title="Failed to load data">

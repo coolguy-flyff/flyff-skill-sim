@@ -13,14 +13,6 @@ import path from 'node:path';
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import puppeteer, { type Browser, type Page } from 'puppeteer';
 import { ROUTES, canonicalFor, type RouteMeta } from './seo-routes';
-import { encodeState } from '../src/engine/serializer';
-import { MAX_CHARACTER_LEVEL } from '../src/engine/constants';
-import type { CharacterState } from '../src/engine/types';
-
-interface MinimalClassRecord {
-    id: number;
-    name: { en: string };
-}
 
 const DIST = path.resolve(process.cwd(), 'dist');
 const TEMPLATE = path.join(DIST, 'index.html');
@@ -173,6 +165,114 @@ function patchHead(html: string, route: RouteMeta): string {
     return patched;
 }
 
+function injectCriticalCss(html: string, css: string | null): string {
+    if (!css) {
+        return html;
+    }
+
+    // Insert just before </head> so the inlined chunk participates in the
+    // cascade after Vite's main stylesheet link, but before any body content.
+    const marker = '</head>';
+    const idx = html.indexOf(marker);
+
+    if (idx === -1) {
+        throw new Error('Template has no </head> — cannot inject critical CSS');
+    }
+
+    const block = `<style data-critical="true">${css}</style>`;
+
+    return `${html.slice(0, idx)}        ${block}\n    ${html.slice(idx)}`;
+}
+
+/**
+ * The loading overlay that masks the React-hydration content swap. Sits over
+ * the prerendered #root, animates an indeterminate progress bar, and is removed
+ * by `main.tsx` once `loadFlyffData()` resolves (with a fade transition so the
+ * underlying React render — which by then matches the prerendered DOM — is
+ * revealed smoothly). Includes a `<noscript>` style override so JS-disabled
+ * visitors see the prerendered content rather than a stuck overlay.
+ *
+ * Theme colors are inlined (Mantine vars aren't yet defined when this paints)
+ * and `prefers-color-scheme` matches the existing meta theme-color values.
+ */
+const PRERENDER_OVERLAY = `
+        <noscript><style>#prerender-loading-overlay { display: none !important; }</style></noscript>
+        <style>
+            @keyframes prerender-bar {
+                0% { transform: translateX(-100%); }
+                100% { transform: translateX(350%); }
+            }
+            /* Lock body scroll while the overlay is mounted so React's
+               post-hydration layout swap (LoadingScreen → real content)
+               can't briefly make the document taller than the viewport
+               and surface a vertical scrollbar. The :has() selector is
+               supported in all evergreen browsers we target. */
+            body:has(> #prerender-loading-overlay) { overflow: hidden; }
+            #prerender-loading-overlay {
+                position: fixed;
+                inset: 0;
+                z-index: 9999;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1.25rem;
+                background: #1A1B1E;
+                color: #adb5bd;
+                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+                transition: opacity 250ms ease-out;
+            }
+            @media (prefers-color-scheme: light) {
+                #prerender-loading-overlay { background: #ffffff; color: #495057; }
+            }
+            #prerender-loading-overlay .title {
+                margin: 0;
+                font-size: 1.0625rem;
+                font-weight: 500;
+                text-align: center;
+                padding: 0 1rem;
+            }
+            #prerender-loading-overlay .subtitle {
+                margin: 0;
+                font-size: 0.875rem;
+                font-weight: 400;
+                opacity: 0.65;
+                text-align: center;
+            }
+            #prerender-loading-overlay .bar {
+                width: 240px;
+                max-width: 60vw;
+                height: 4px;
+                background: rgba(127, 127, 127, 0.18);
+                border-radius: 2px;
+                overflow: hidden;
+            }
+            #prerender-loading-overlay .bar > span {
+                display: block;
+                width: 30%;
+                height: 100%;
+                background: #15aabf;
+                border-radius: 2px;
+                animation: prerender-bar 1.4s ease-in-out infinite;
+            }
+        </style>
+        <div id="prerender-loading-overlay" role="status" aria-busy="true" aria-live="polite">
+            <p class="title">Loading Skill Simulator for Flyff Universe…</p>
+            <p class="subtitle">Please wait</p>
+            <div class="bar"><span></span></div>
+        </div>`;
+
+function injectPrerenderOverlay(html: string): string {
+    const marker = '<!-- prerender:overlay -->';
+    const idx = html.indexOf(marker);
+
+    if (idx === -1) {
+        throw new Error('Template missing <!-- prerender:overlay --> marker');
+    }
+
+    return html.slice(0, idx) + PRERENDER_OVERLAY.trim() + html.slice(idx + marker.length);
+}
+
 function injectRoot(html: string, rootHtml: string): string {
     const pattern = /<div\s+id="root">\s*<\/div>/;
 
@@ -183,44 +283,6 @@ function injectRoot(html: string, rootHtml: string): string {
     // Escape `$` in replacement so literal dollar signs in rendered HTML
     // aren't interpreted as regex back-references.
     return html.replace(pattern, () => rootHtml);
-}
-
-/**
- * Builds the URL that Puppeteer navigates to for a given route. Class-tree
- * routes get a fragment-identifier state-hash that hydrates the engine at
- * `MAX_CHARACTER_LEVEL` for the target third class. At that level the
- * simulator auto-selects the third-class tab (via `getCurrentTierClass`),
- * so the prerendered body contains the full class tree — not the default
- * tier-1 view a fresh engine would otherwise show.
- */
-function buildNavUrl(
-    baseUrl: string,
-    route: RouteMeta,
-    classesByEnName: Map<string, MinimalClassRecord>,
-): string {
-    const url = `${baseUrl}${route.urlPath}`;
-
-    if (!route.urlPath.startsWith('/c/')) {
-        return url;
-    }
-
-    const slug = route.urlPath.slice('/c/'.length);
-    const record = [...classesByEnName.values()].find(
-        (c) => c.name.en.toLowerCase() === slug,
-    );
-
-    if (!record) {
-        throw new Error(`No class record matches slug '${slug}' in class.json`);
-    }
-
-    const state: CharacterState = {
-        classId: record.id,
-        level: MAX_CHARACTER_LEVEL,
-        pages: [{ name: '', allocations: {} }],
-        activePageIndex: 0,
-    };
-
-    return `${url}#${encodeState(state)}`;
 }
 
 /**
@@ -242,16 +304,55 @@ function mirrorPaths(route: RouteMeta): string[] {
     return [`c/${slug}/index.html`];
 }
 
-async function loadClassIndex(): Promise<Map<string, MinimalClassRecord>> {
-    const raw = await fsp.readFile(path.join(DIST, 'data/class.json'), 'utf-8');
-    const records = JSON.parse(raw) as MinimalClassRecord[];
-    const map = new Map<string, MinimalClassRecord>();
+/**
+ * Inlines the on-disk (decompressed) byte sizes of the data JSONs as
+ * `window.__FLYFF_SIZES`. The runtime fetch progress tracker divides by
+ * these — Cloudflare Pages serves the files compressed, so the
+ * `Content-Length` header doesn't match the decompressed bytes the stream
+ * reader gives us. Pre-compressed sizes from disk are the right denominator.
+ */
+async function readDataSizes(): Promise<{ class: number; skill: number; params: number }> {
+    const dataDir = path.join(DIST, 'data');
+    const [classStat, skillStat, paramsStat] = await Promise.all([
+        fsp.stat(path.join(dataDir, 'class.json')),
+        fsp.stat(path.join(dataDir, 'skill.json')),
+        fsp.stat(path.join(dataDir, 'parameter-labels.json')),
+    ]);
 
-    for (const c of records) {
-        map.set(c.name.en, c);
+    return { class: classStat.size, skill: skillStat.size, params: paramsStat.size };
+}
+
+function injectDataSizes(html: string, sizes: { class: number; skill: number; params: number }): string {
+    const block = `<script>window.__FLYFF_SIZES=${JSON.stringify(sizes)}</script>`;
+    const marker = '</head>';
+    const idx = html.indexOf(marker);
+
+    if (idx === -1) {
+        throw new Error('Template has no </head> — cannot inject data sizes');
     }
 
-    return map;
+    return `${html.slice(0, idx)}        ${block}\n    ${html.slice(idx)}`;
+}
+
+/**
+ * Reads the contents of a Vite-built CSS chunk by filename prefix (the part
+ * before the content hash). Vite emits e.g. `dist/assets/simulator-0dZn0s3a.css`
+ * — the prefix `simulator` is stable across builds, the hash is not, so we glob
+ * for the current one. Returns null if no match, which we treat as "this route
+ * has no lazy-loaded CSS to inline".
+ */
+async function readCssChunk(prefix: string): Promise<string | null> {
+    const assetsDir = path.join(DIST, 'assets');
+    const entries = await fsp.readdir(assetsDir);
+    const match = entries.find(
+        (f) => f.startsWith(`${prefix}-`) && f.endsWith('.css'),
+    );
+
+    if (!match) {
+        return null;
+    }
+
+    return fsp.readFile(path.join(assetsDir, match), 'utf-8');
 }
 
 async function captureRoot(page: Page, url: string): Promise<string> {
@@ -346,14 +447,32 @@ async function main() {
         console.log('  · headless Chromium launched');
 
         const template = await fsp.readFile(TEMPLATE, 'utf-8');
-        const classesByEnName = await loadClassIndex();
+        const dataSizes = await readDataSizes();
         const page = await browser.newPage();
         const baseUrl = `http://${HOST}:${PORT}`;
 
+        const criticalCssCache = new Map<string, string | null>();
+
         for (const route of ROUTES) {
-            const url = buildNavUrl(baseUrl, route, classesByEnName);
+            const url = `${baseUrl}${route.urlPath}`;
             const rootHtml = await captureRoot(page, url);
-            const rendered = injectRoot(patchHead(template, route), rootHtml);
+
+            let css: string | null = null;
+
+            if (route.criticalCssChunk) {
+                if (!criticalCssCache.has(route.criticalCssChunk)) {
+                    criticalCssCache.set(
+                        route.criticalCssChunk,
+                        await readCssChunk(route.criticalCssChunk),
+                    );
+                }
+
+                css = criticalCssCache.get(route.criticalCssChunk) ?? null;
+            }
+
+            const headed = injectDataSizes(injectCriticalCss(patchHead(template, route), css), dataSizes);
+            const withOverlay = injectPrerenderOverlay(headed);
+            const rendered = injectRoot(withOverlay, rootHtml);
 
             const targets = [route.outPath, ...mirrorPaths(route)];
 

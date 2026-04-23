@@ -3,6 +3,10 @@
         "title": "Flyff Universe 技能模拟器",
         "subtitle": "规划你的三转职业加点方案"
     },
+    "loading": {
+        "skillData": "正在加载技能数据…",
+        "pleaseWait": "请稍候"
+    },
     "home": {
         "pickClass": "选择一个职业开始"
     },

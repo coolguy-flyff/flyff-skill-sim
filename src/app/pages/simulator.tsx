@@ -1,4 +1,4 @@
-import { ActionIcon, Alert, Box, Container, Group, Loader, Paper, Stack, Text } from '@mantine/core';
+import { ActionIcon, Alert, Box, Container, Group, Paper, Stack, Text } from '@mantine/core';
 import { IconArrowLeft, IconX } from '@tabler/icons-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -25,6 +25,7 @@ import { MasterVariationsSection, PassiveSkillsSection } from '../components/ski
 import { PageMenu } from '../components/page-menu';
 import { SimulatorActions } from '../components/simulator-actions';
 import { CopyrightFooter } from '../components/copyright-footer';
+import { LoadingScreen } from '../components/loading-screen';
 import { deslugClass } from '../data/class-slug';
 
 export function SimulatorPage() {
@@ -125,13 +126,7 @@ export function SimulatorPage() {
     }
 
     if (loading || !data || !engine || !thirdClass || !classIndex) {
-        return (
-            <Container py="xl">
-                <Group justify="center">
-                    <Loader />
-                </Group>
-            </Container>
-        );
+        return <LoadingScreen />;
     }
 
     const state = engine.getState();

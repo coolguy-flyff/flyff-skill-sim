@@ -3,6 +3,10 @@
         "title": "Simulateur de compétences pour Flyff Universe",
         "subtitle": "Planifiez votre build 3e classe et partagez-le"
     },
+    "loading": {
+        "skillData": "Chargement des données…",
+        "pleaseWait": "Veuillez patienter"
+    },
     "home": {
         "pickClass": "Choisissez une classe pour commencer"
     },

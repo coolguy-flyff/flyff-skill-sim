@@ -22,6 +22,14 @@ export interface RouteMeta {
     description: string;
     preloadImages: ReadonlyArray<string>;
     prefetchImages: ReadonlyArray<string>;
+    /**
+     * Vite CSS chunk (by filename prefix, pre-hash) to inline into the
+     * prerendered <head>. These chunks are tied to lazy-loaded route modules,
+     * so without inlining they only apply after the JS bundle downloads and
+     * dynamic-imports its CSS — causing a visible layout flash on first paint
+     * (tree nodes stack vertically until `.skillTree` positioning kicks in).
+     */
+    criticalCssChunk: string | null;
 }
 
 const CLASS_SPRITE = '/data/class.png';
@@ -41,6 +49,7 @@ const HOME: RouteMeta = {
     // the user drills into a class, so prefetch keeps it idle-priority.
     preloadImages: [CLASS_SPRITE],
     prefetchImages: [SKILL_SPRITE],
+    criticalCssChunk: 'home',
 };
 
 function classRoute(className: string): RouteMeta {
@@ -60,6 +69,7 @@ function classRoute(className: string): RouteMeta {
         // Class pages paint both sprites on first render.
         preloadImages: [CLASS_SPRITE, SKILL_SPRITE],
         prefetchImages: [],
+        criticalCssChunk: 'simulator',
     };
 }
 

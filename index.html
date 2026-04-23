@@ -48,6 +48,8 @@
         </script>
 
         <link rel="preload" as="fetch" href="/data/class.json" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="/data/skill.json" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="/data/parameter-labels.json" crossorigin="anonymous" />
         <!-- prerender:hints -->
         <link rel="stylesheet" href="/data/skill.css" />
         <link rel="stylesheet" href="/data/class.css" />
@@ -55,6 +57,7 @@
     </head>
     <body>
         <div id="root"></div>
+        <!-- prerender:overlay -->
         <script type="module" src="/src/app/main.tsx"></script>
     </body>
 </html>
