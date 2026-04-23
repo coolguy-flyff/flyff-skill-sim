@@ -1,7 +1,7 @@
 import { Group, NumberInput, Stack, Text } from '@mantine/core';
 import { MAX_CHARACTER_LEVEL } from '@engine/constants';
 import { useTranslation } from 'react-i18next';
-import { useIsMobile } from '../hooks/use-responsive';
+import { useIsCompact } from '../hooks/use-responsive';
 
 interface Props {
     level: number;
@@ -13,7 +13,7 @@ interface Props {
 
 export function LevelInput({ level, onChange, highlight = false }: Props) {
     const { t } = useTranslation();
-    const isMobile = useIsMobile();
+    const isCompact = useIsCompact();
 
     const accent = 'var(--mantine-color-red-6)';
     const inputStyles = highlight
@@ -36,13 +36,13 @@ export function LevelInput({ level, onChange, highlight = false }: Props) {
                 }
             }}
             aria-label={t('simulator.level')}
-            w={isMobile ? 80 : 110}
+            w={isCompact ? 80 : 110}
             size="sm"
             styles={inputStyles}
         />
     );
 
-    if (isMobile) {
+    if (isCompact) {
         return (
             <Group gap={6} align="center" wrap="nowrap">
                 <Text size="xs" c={labelColor} fw={highlight ? 600 : undefined}>

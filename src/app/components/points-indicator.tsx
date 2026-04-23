@@ -1,6 +1,6 @@
 import { Badge, Group, Stack, Text } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
-import { useIsMobile } from '../hooks/use-responsive';
+import { useIsCompact } from '../hooks/use-responsive';
 
 interface Props {
     remaining: number;
@@ -9,7 +9,7 @@ interface Props {
 
 export function PointsIndicator({ remaining, total }: Props) {
     const { t } = useTranslation();
-    const isMobile = useIsMobile();
+    const isCompact = useIsCompact();
     const color = remaining > 0 ? 'cyan' : 'dimmed';
 
     const badge = (
@@ -20,14 +20,14 @@ export function PointsIndicator({ remaining, total }: Props) {
             radius="sm"
             h={36}
             px="md"
-            miw={isMobile ? 100 : 130}
+            miw={isCompact ? 100 : 130}
             style={{ fontSize: 14, fontVariantNumeric: 'tabular-nums' }}
         >
             {remaining} / {total}
         </Badge>
     );
 
-    if (isMobile) {
+    if (isCompact) {
         return (
             <Group gap={6} align="center" wrap="nowrap">
                 <Text size="xs" c="dimmed">

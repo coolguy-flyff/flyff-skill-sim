@@ -12,7 +12,7 @@ import { useFlyffData } from '../hooks/use-flyff-data';
 import { useEngineStore } from '../stores/engine-store';
 import { useEngine } from '../hooks/use-engine';
 import { useHashSync } from '../hooks/use-hash-sync';
-import { useIsMobile } from '../hooks/use-responsive';
+import { useIsCompact, useIsMobile } from '../hooks/use-responsive';
 import { ClassTabs } from '../components/class-tabs';
 import { CurrentClassDisplay } from '../components/current-class-display';
 import { LevelInput } from '../components/level-input';
@@ -33,6 +33,7 @@ export function SimulatorPage() {
     const { t } = useTranslation();
     const { data, loading, error } = useFlyffData();
     const isMobile = useIsMobile();
+    const isCompact = useIsCompact();
 
     const englishClassName = classKey ? deslugClass(classKey) : null;
 
@@ -294,15 +295,21 @@ export function SimulatorPage() {
                             </Group>
                         </Stack>
                     ) : (
-                        // Desktop: left cluster (back + class + page menu) is pinned
-                        // to the container's left edge, right cluster (share, reset,
-                        // language, theme) to the right. Level/points sit at 50% via
-                        // absolute positioning so neither side's width drift can move
-                        // them. The relative wrapper reserves enough height for the
-                        // level/points labels (input + label ≈ 58px) so they never
-                        // bleed into the class tabs below.
-                        <Box style={{ position: 'relative', minHeight: 60 }}>
-                            <Group justify="space-between" align="flex-start" gap="md" wrap="nowrap">
+                        // Non-mobile header. Two shapes:
+                        //   - Desktop (!isCompact): left cluster (back + class +
+                        //     page menu) pinned left, right cluster (share, reset,
+                        //     language, theme) pinned right. Level/points are
+                        //     absolutely centered at 50% so neither side's width
+                        //     drift can move them. The relative wrapper reserves
+                        //     ~60px for the stacked input+label below layout.
+                        //   - Compact-landscape (isCompact): inline everywhere.
+                        //     Level joins the left cluster after PageMenu; Points
+                        //     joins the right cluster next to SimulatorActions.
+                        //     No minHeight reservation, no absolute centering —
+                        //     the header hugs content height so the class tabs
+                        //     sit directly underneath without a gap.
+                        <Box style={{ position: 'relative', minHeight: isCompact ? undefined : 60 }}>
+                            <Group justify="space-between" align="center" gap="md" wrap="nowrap">
                                 <Group gap="sm" align="center" wrap="nowrap">
                                     <ActionIcon
                                         component={Link}
@@ -323,29 +330,43 @@ export function SimulatorPage() {
                                         onRename={renamePage}
                                         onDuplicate={duplicatePage}
                                     />
+                                    {isCompact ? (
+                                        <LevelInput
+                                            level={state.level}
+                                            onChange={setLevel}
+                                            highlight={selectedLevelGated}
+                                        />
+                                    ) : null}
                                 </Group>
 
-                                <SimulatorActions
-                                    onShare={handleShare}
-                                    onResetAll={resetAllAction}
-                                    shareCopied={shareCopied}
-                                />
+                                <Group gap="sm" align="center" wrap="nowrap">
+                                    {isCompact ? (
+                                        <PointsIndicator remaining={remaining} total={total} />
+                                    ) : null}
+                                    <SimulatorActions
+                                        onShare={handleShare}
+                                        onResetAll={resetAllAction}
+                                        shareCopied={shareCopied}
+                                    />
+                                </Group>
                             </Group>
 
-                            <Group
-                                gap="md"
-                                align="flex-start"
-                                wrap="nowrap"
-                                style={{
-                                    position: 'absolute',
-                                    left: '50%',
-                                    top: 0,
-                                    transform: 'translateX(-50%)',
-                                }}
-                            >
-                                <LevelInput level={state.level} onChange={setLevel} highlight={selectedLevelGated} />
-                                <PointsIndicator remaining={remaining} total={total} />
-                            </Group>
+                            {!isCompact ? (
+                                <Group
+                                    gap="md"
+                                    align="flex-start"
+                                    wrap="nowrap"
+                                    style={{
+                                        position: 'absolute',
+                                        left: '50%',
+                                        top: 0,
+                                        transform: 'translateX(-50%)',
+                                    }}
+                                >
+                                    <LevelInput level={state.level} onChange={setLevel} highlight={selectedLevelGated} />
+                                    <PointsIndicator remaining={remaining} total={total} />
+                                </Group>
+                            ) : null}
                         </Box>
                     )}
                 </Container>
@@ -370,9 +391,9 @@ export function SimulatorPage() {
                                 selectedSkillId={selectedSkillId}
                                 onSelect={onSelectSkill}
                                 onMax={maxAction}
-                                scaleX={isMobile ? 1.6 : 2.6}
-                                scaleY={isMobile ? 2.2 : 2.6}
-                                nodeSize={isMobile ? 40 : 52}
+                                scaleX={isCompact ? 1.6 : 2.6}
+                                scaleY={isCompact ? 2.2 : 2.6}
+                                nodeSize={isCompact ? 40 : 52}
                             />
 
                             {isThirdClassTab ? (

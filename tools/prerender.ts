@@ -467,6 +467,12 @@ async function main() {
         const template = await fsp.readFile(TEMPLATE, 'utf-8');
         const dataSizes = await readDataSizes();
         const page = await browser.newPage();
+        // Force a desktop-sized viewport so the prerender always captures the
+        // wide layout. Puppeteer defaults to 800×600 — that 600px height now
+        // trips the mobile breakpoint (use-responsive.ts), which would emit
+        // the mobile layout into the prerendered HTML and mismatch what
+        // desktop visitors hydrate to.
+        await page.setViewport({ width: 1280, height: 900 });
         const baseUrl = `http://${HOST}:${PORT}`;
 
         const criticalCssCache = new Map<string, string | null>();
