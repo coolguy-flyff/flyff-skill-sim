@@ -159,6 +159,31 @@ async function downloadParameterLabels(names: string[]): Promise<Record<string, 
     return result;
 }
 
+/**
+ * The Flyff client rescaled the `magicattack` rate parameter so that values
+ * are stored at 10× the displayed percentage. The public API still emits the
+ * pre-rescale numbers, so e.g. Kyrie Eleison level 5 reports +80% magic atk
+ * when the in-game tooltip shows +8%. Divide every `magicattack` rate ability
+ * by 10 to match what players actually see. Remove this once the API catches
+ * up.
+ */
+function normalizeMagicAttackScale(skills: SkillRecord[]) {
+    let patched = 0;
+
+    for (const s of skills) {
+        for (const lv of s.levels ?? []) {
+            for (const a of (lv.abilities ?? []) as Array<Record<string, unknown>>) {
+                if (a.parameter === 'magicattack' && a.rate === true && typeof a.add === 'number') {
+                    a.add = (a.add as number) / 10;
+                    patched++;
+                }
+            }
+        }
+    }
+
+    console.log(`  · normalized ${patched} magicattack rate values (÷10)`);
+}
+
 async function downloadMany<T>(endpoint: string): Promise<T[]> {
     const ids = await apiGet<number[]>(endpoint);
     const all: T[] = [];
@@ -361,6 +386,7 @@ async function main() {
     // synergies — the tooltip needs their names for resolution. The engine
     // buckets skills by class, so non-UI skills simply never land in any
     // tree/picker bucket.
+    normalizeMagicAttackScale(skillsRaw);
     await save('skill.json', skillsRaw);
 
     const uiSkills = skillsRaw.filter((s) => usableIds.has(s.class));

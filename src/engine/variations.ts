@@ -1,5 +1,4 @@
 import { getSkillTier, type ClassIndex } from './class-tree';
-import { isForcedPassive } from './skill-overrides';
 import type { SkillRecord } from './types';
 
 /**
@@ -29,7 +28,7 @@ export function classifySkill(skill: SkillRecord, index: ClassIndex): SkillRole 
         return 'variation';
     }
 
-    if (skill.passive === true || isForcedPassive(skill.id)) {
+    if (skill.passive === true) {
         return 'passive';
     }
 
