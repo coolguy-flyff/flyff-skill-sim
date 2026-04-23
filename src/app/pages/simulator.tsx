@@ -1,4 +1,4 @@
-import { ActionIcon, Alert, Box, Container, Group, Paper, Stack, Text } from '@mantine/core';
+import { ActionIcon, Alert, Box, Container, Group, Paper, Stack, Text, Transition } from '@mantine/core';
 import { IconArrowLeft, IconX } from '@tabler/icons-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -55,6 +55,11 @@ export function SimulatorPage() {
     const [selectedSkillId, setSelectedSkillId] = useState<number | null>(null);
     const [activeClassTab, setActiveClassTab] = useState<number | null>(null);
     const [shareCopied, setShareCopied] = useState(false);
+    // Cache the most recent mobile-selected skill so the bottom panel keeps
+    // rendering its content during the slide-down exit transition (when
+    // selectedSkill has already become null). Declared up here, before any
+    // early returns, so the hook order is stable across renders.
+    const [lastMobileSkill, setLastMobileSkill] = useState<SkillRecord | null>(null);
     const initializedFor = useRef<string | null>(null);
 
     const thirdClass: ClassRecord | null = useMemo(() => {
@@ -109,6 +114,22 @@ export function SimulatorPage() {
         }
     }, [engine, version, activeClassTab]);
 
+    // Track the most recent mobile-selected skill so the bottom panel keeps
+    // its content during the slide-down exit transition. Lives up here (with
+    // other top-level hooks) so the hook count stays stable across the
+    // loading-vs-loaded early returns below.
+    useEffect(() => {
+        if (selectedSkillId == null || !isMobile || !engine) {
+            return;
+        }
+
+        const skill = engine.getSkill(selectedSkillId);
+
+        if (skill) {
+            setLastMobileSkill(skill);
+        }
+    }, [selectedSkillId, isMobile, engine]);
+
     const getSelectedTabClassSkills = useCallback((): SkillRecord[] => {
         if (!engine || activeClassTab === null) {
             return [];
@@ -143,6 +164,14 @@ export function SimulatorPage() {
     const selectedLevelGated =
         selectedIncrementIssue === AllocationIssue.CHARACTER_LEVEL_TOO_LOW ||
         selectedIncrementIssue === AllocationIssue.CLASS_NOT_LEARNED;
+
+    const mobilePanelSkill = selectedSkill ?? lastMobileSkill;
+    const mobilePanelIncrementIssue = mobilePanelSkill
+        ? engine.canIncrementCascade(mobilePanelSkill.id).issue
+        : null;
+    const mobilePanelDecrementIssue = mobilePanelSkill
+        ? engine.canDecrement(mobilePanelSkill.id).issue
+        : null;
 
     const onClassTabChange = (classId: number) => {
         setActiveClassTab(classId);
@@ -196,19 +225,21 @@ export function SimulatorPage() {
 
     // Mobile panel shows [base, ...variations] inline when a 3rd-class base or
     // variation is selected, replacing the desktop-only Master Variations grid.
+    // Uses `mobilePanelSkill` (= selectedSkill ?? lastMobileSkill) so the strip
+    // stays populated during the panel's slide-down exit animation.
     const mobilePanelVariationStrip: SkillRecord[] = (() => {
-        if (!isMobile || !isThirdClassTab || !selectedSkill) {
+        if (!isMobile || !isThirdClassTab || !mobilePanelSkill) {
             return [];
         }
 
-        const role = classifySkill(selectedSkill, classIndex);
+        const role = classifySkill(mobilePanelSkill, classIndex);
 
         if (role === 'base') {
-            return [selectedSkill, ...engine.getMasterVariations(selectedSkill.id)];
+            return [mobilePanelSkill, ...engine.getMasterVariations(mobilePanelSkill.id)];
         }
 
         if (role === 'variation') {
-            const base = engine.getVariationBase(selectedSkill.id);
+            const base = engine.getVariationBase(mobilePanelSkill.id);
 
             return base ? [base, ...engine.getMasterVariations(base.id)] : [];
         }
@@ -404,70 +435,82 @@ export function SimulatorPage() {
 
             <CopyrightFooter />
 
-            {isMobile && selectedSkill ? (
-                // Fixed to the viewport bottom so the panel overlays the footer
-                // rather than adding scroll length. Tap X to dismiss.
-                <Box
-                    style={{
-                        position: 'fixed',
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        zIndex: 15,
-                        borderTop: '1px solid var(--mantine-color-default-border)',
-                        boxShadow: '0 -8px 24px -12px rgba(0, 0, 0, 0.55)',
-                    }}
-                    bg="var(--mantine-color-body)"
-                >
-                    <Container size="xl" py="xs">
-                        <Stack gap="xs">
-                            <Group justify="space-between" align="flex-start" wrap="nowrap">
-                                <SkillControls
-                                    skill={selectedSkill}
-                                    currentLevel={allocations[selectedSkill.id] ?? 0}
-                                    canIncrementIssue={selectedIncrementIssue}
-                                    canDecrementIssue={selectedDecrementIssue}
-                                    onIncrement={() => incrementAction(selectedSkill.id, 1)}
-                                    onDecrement={() => incrementAction(selectedSkill.id, -1)}
-                                    onMax={() => maxAction(selectedSkill.id)}
-                                    onReset={() => resetAction(selectedSkill.id)}
-                                />
-                                <ActionIcon
-                                    variant="subtle"
-                                    size="sm"
-                                    onClick={onCloseSelection}
-                                    aria-label="Close selection"
-                                >
-                                    <IconX size={16} />
-                                </ActionIcon>
-                            </Group>
-                            {mobilePanelVariationStrip.length > 0 ? (
-                                <Group gap="xs" wrap="wrap" justify="center">
-                                    {mobilePanelVariationStrip.map((s) => (
-                                        <SkillNode
-                                            key={s.id}
-                                            skill={s}
-                                            currentLevel={allocations[s.id] ?? 0}
-                                            maxLevel={getSkillMaxLevel(s)}
-                                            canIncrement={canIncrementSkill(s.id)}
-                                            selected={selectedSkillId === s.id}
-                                            onSelect={() => onSelectSkill(s.id)}
-                                            onContextAction={() => maxAction(s.id)}
-                                            size={40}
+            {/* Fixed to the viewport bottom; slides up from below on open and
+                back down on dismiss via Mantine's Transition. We render against
+                `mobilePanelSkill` (cached last selection) so the slide-down
+                exit doesn't blank the panel mid-animation. */}
+            <Transition
+                mounted={isMobile && selectedSkill !== null}
+                transition="slide-up"
+                duration={220}
+                timingFunction="ease-out"
+            >
+                {(transitionStyles) => (
+                    <Box
+                        style={{
+                            position: 'fixed',
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            zIndex: 15,
+                            borderTop: '1px solid var(--mantine-color-default-border)',
+                            boxShadow: '0 -8px 24px -12px rgba(0, 0, 0, 0.55)',
+                            ...transitionStyles,
+                        }}
+                        bg="var(--mantine-color-body)"
+                    >
+                        {mobilePanelSkill ? (
+                            <Container size="xl" py="xs">
+                                <Stack gap="xs">
+                                    <Group justify="space-between" align="flex-start" wrap="nowrap">
+                                        <SkillControls
+                                            skill={mobilePanelSkill}
+                                            currentLevel={allocations[mobilePanelSkill.id] ?? 0}
+                                            canIncrementIssue={mobilePanelIncrementIssue}
+                                            canDecrementIssue={mobilePanelDecrementIssue}
+                                            onIncrement={() => incrementAction(mobilePanelSkill.id, 1)}
+                                            onDecrement={() => incrementAction(mobilePanelSkill.id, -1)}
+                                            onMax={() => maxAction(mobilePanelSkill.id)}
+                                            onReset={() => resetAction(mobilePanelSkill.id)}
                                         />
-                                    ))}
-                                </Group>
-                            ) : null}
-                            <SkillTooltipBody
-                                skill={selectedSkill}
-                                currentLevel={allocations[selectedSkill.id] ?? 0}
-                                hideHeader
-                                fullWidth
-                            />
-                        </Stack>
-                    </Container>
-                </Box>
-            ) : null}
+                                        <ActionIcon
+                                            variant="subtle"
+                                            size="sm"
+                                            onClick={onCloseSelection}
+                                            aria-label="Close selection"
+                                        >
+                                            <IconX size={16} />
+                                        </ActionIcon>
+                                    </Group>
+                                    {mobilePanelVariationStrip.length > 0 ? (
+                                        <Group gap="xs" wrap="wrap" justify="center">
+                                            {mobilePanelVariationStrip.map((s) => (
+                                                <SkillNode
+                                                    key={s.id}
+                                                    skill={s}
+                                                    currentLevel={allocations[s.id] ?? 0}
+                                                    maxLevel={getSkillMaxLevel(s)}
+                                                    canIncrement={canIncrementSkill(s.id)}
+                                                    selected={selectedSkillId === s.id}
+                                                    onSelect={() => onSelectSkill(s.id)}
+                                                    onContextAction={() => maxAction(s.id)}
+                                                    size={40}
+                                                />
+                                            ))}
+                                        </Group>
+                                    ) : null}
+                                    <SkillTooltipBody
+                                        skill={mobilePanelSkill}
+                                        currentLevel={allocations[mobilePanelSkill.id] ?? 0}
+                                        hideHeader
+                                        fullWidth
+                                    />
+                                </Stack>
+                            </Container>
+                        ) : null}
+                    </Box>
+                )}
+            </Transition>
 
         </>
     );

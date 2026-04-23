@@ -391,20 +391,38 @@ async function captureRoot(page: Page, url: string): Promise<string> {
         //      useEffect re-renders.
         //   3. At least one icon element is present on non-home routes, so we
         //      don't capture a half-rendered tree.
-        await page.waitForFunction(
-            () => {
+        try {
+            await page.waitForFunction(
+                () => {
+                    const root = document.getElementById('root');
+
+                    if (!root || root.children.length === 0) {
+                        return false;
+                    }
+
+                    const loader = document.querySelector('[class*="Loader-root"]');
+
+                    return loader === null;
+                },
+                { timeout: NAV_TIMEOUT_MS, polling: 50 },
+            );
+        } catch (err) {
+            // Surface page state on timeout — otherwise the puppeteer error is
+            // opaque and we can't tell whether the app errored, the loader is
+            // still showing, or hydration never happened.
+            const debug = await page.evaluate(() => {
                 const root = document.getElementById('root');
-
-                if (!root || root.children.length === 0) {
-                    return false;
-                }
-
-                const loader = document.querySelector('[class*="Loader-root"]');
-
-                return loader === null;
-            },
-            { timeout: NAV_TIMEOUT_MS, polling: 50 },
-        );
+                const loaders = document.querySelectorAll('[class*="Loader-root"]').length;
+                return {
+                    rootChildren: root?.children.length ?? -1,
+                    loaders,
+                    bodyTextSample: document.body.innerText.slice(0, 200),
+                };
+            });
+            console.error(`Wait timed out for ${url}:`, debug);
+            console.error('Browser errors so far:', errors.join('\n  ') || '(none)');
+            throw err;
+        }
 
         // Small settle pass: Mantine/React can still flush one more paint after
         // the loader disappears (e.g. tree layout measuring phase). 250ms is
