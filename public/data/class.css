@@ -98,21 +98,21 @@
     --icon-offset-y: -128;
 }
 
-.class-icon[data-icon="harlequin.png"] {
+.class-icon[data-icon="seraph.png"] {
     --icon-width: 64;
     --icon-height: 64;
     --icon-offset-x: -192;
     --icon-offset-y: -128;
 }
 
-.class-icon[data-icon="seraph.png"] {
+.class-icon[data-icon="templar.png"] {
     --icon-width: 64;
     --icon-height: 64;
     --icon-offset-x: -256;
     --icon-offset-y: -128;
 }
 
-.class-icon[data-icon="mentalist.png"] {
+.class-icon[data-icon="crackshooter.png"] {
     --icon-width: 64;
     --icon-height: 64;
     --icon-offset-x: 0;
@@ -126,28 +126,28 @@
     --icon-offset-y: -192;
 }
 
-.class-icon[data-icon="forcemaster.png"] {
+.class-icon[data-icon="arcanist.png"] {
     --icon-width: 64;
     --icon-height: 64;
     --icon-offset-x: -128;
     --icon-offset-y: -192;
 }
 
-.class-icon[data-icon="arcanist.png"] {
+.class-icon[data-icon="forcemaster.png"] {
     --icon-width: 64;
     --icon-height: 64;
     --icon-offset-x: -192;
     --icon-offset-y: -192;
 }
 
-.class-icon[data-icon="templar.png"] {
+.class-icon[data-icon="harlequin.png"] {
     --icon-width: 64;
     --icon-height: 64;
     --icon-offset-x: -256;
     --icon-offset-y: -192;
 }
 
-.class-icon[data-icon="crackshooter.png"] {
+.class-icon[data-icon="mentalist.png"] {
     --icon-width: 64;
     --icon-height: 64;
     --icon-offset-x: 0;
