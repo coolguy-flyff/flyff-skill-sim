@@ -8,7 +8,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "tsc --noEmit && vite build",
+        "build": "tsc --noEmit && vite build && tsx tools/prerender.ts",
         "preview": "vite preview",
         "typecheck": "tsc --noEmit",
         "test": "vitest run",
@@ -41,6 +41,7 @@
         "postcss": "^8.5.1",
         "postcss-preset-mantine": "^1.17.0",
         "postcss-simple-vars": "^7.0.1",
+        "puppeteer": "^24.42.0",
         "tsx": "^4.19.2",
         "typescript": "^5.7.3",
         "vite": "^6.0.11",
