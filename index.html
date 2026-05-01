@@ -30,21 +30,34 @@
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
-                "@type": "WebApplication",
-                "name": "Skill Simulator for Flyff Universe",
-                "url": "https://flyff-skill-sim.pages.dev/",
-                "description": "Plan your Flyff Universe build across every 1st, 2nd, and 3rd class tree, with master variations and shareable URLs.",
-                "applicationCategory": "GameApplication",
-                "operatingSystem": "Any",
-                "browserRequirements": "Requires JavaScript. Requires a modern browser.",
-                "isAccessibleForFree": true,
-                "inLanguage": ["en", "de", "fr", "es", "zh"],
-                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-                "about": {
-                    "@type": "VideoGame",
-                    "name": "Flyff Universe",
-                    "genre": "MMORPG"
-                }
+                "@graph": [
+                    {
+                        "@type": "WebSite",
+                        "@id": "https://flyff-skill-sim.pages.dev/#website",
+                        "url": "https://flyff-skill-sim.pages.dev/",
+                        "name": "Skill Simulator for Flyff Universe",
+                        "description": "Plan your Flyff Universe build across every 1st, 2nd, and 3rd class tree, with master variations and shareable URLs.",
+                        "inLanguage": ["en", "de", "fr", "es", "zh"]
+                    },
+                    {
+                        "@type": "WebApplication",
+                        "name": "Skill Simulator for Flyff Universe",
+                        "url": "https://flyff-skill-sim.pages.dev/",
+                        "isPartOf": { "@id": "https://flyff-skill-sim.pages.dev/#website" },
+                        "description": "Plan your Flyff Universe build across every 1st, 2nd, and 3rd class tree, with master variations and shareable URLs.",
+                        "applicationCategory": "GameApplication",
+                        "operatingSystem": "Any",
+                        "browserRequirements": "Requires JavaScript. Requires a modern browser.",
+                        "isAccessibleForFree": true,
+                        "inLanguage": ["en", "de", "fr", "es", "zh"],
+                        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+                        "about": {
+                            "@type": "VideoGame",
+                            "name": "Flyff Universe",
+                            "genre": "MMORPG"
+                        }
+                    }
+                ]
             }
         </script>
 
